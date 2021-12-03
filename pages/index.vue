@@ -1,11 +1,14 @@
 <template>
   <div class="container">
     <h1>Alle producten</h1>
-    <ProductsCardDisplay
-      v-for="products in allProducts"
-      :key="products.ProductID"
-      :productsSection="products"
+    <div class="wrapper">
+<ProductsCardDisplay
+      :productsSection="allProducts"
     />
+
+    
+    </div>
+    
 
     <!-- {{ allProducts}}
 <br>
@@ -34,7 +37,6 @@
   </div>
 </template>
 
-//brand //WebSubGroup //ProductOffers
 <script>
 export default {
   methods: {},
@@ -55,23 +57,48 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;500;700;900&family=Readex+Pro:wght@300;500;700&display=swap");
 
 body {
-  width: 100vw;
+  /* width: 100vw; */
   box-sizing: border-box;
   margin: 0;
   background-color: rgb(248, 65, 65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .container {
-  
+  width: 300px;
+  /* padding: 20px; */
+  /* background-color: turquoise; */
   display: flex;
-  padding: 20px;
-  flex-direction: column;
   justify-content: center;
-  align-items: center;
-  gap: 20px;
   font-family: "Montserrat", sans-serif;
+  gap: 20px;
+  flex-wrap: wrap;
   /* font-family: 'Readex Pro', sans-serif; */
 }
-.container h1 {
-  margin-top: 100px;
+.wrapper {
+  /* width: 1200px; */
+  display: flex;
+  
+  flex-direction: row;
+ 
 }
+.container h1 {
+  margin-top: 80px;
+  text-align: center;
+  /* color: white; */
+}
+
+@media only screen and (min-width: 800px) {
+  .container {
+    width: 800px;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .container {
+    width: 1200px;
+  }
+}
+
+
 </style>
