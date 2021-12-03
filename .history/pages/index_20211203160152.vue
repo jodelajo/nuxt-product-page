@@ -58,15 +58,17 @@ body {
   width: 100vw;
   box-sizing: border-box;
   margin: 0;
-  background-color: rgb(248, 65, 65);
+  background-color: rgb(214, 214, 214);
 }
 .container {
   
   display: flex;
-  padding: 20px;
+  /* padding: 0; */
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  
+  
   gap: 20px;
   font-family: "Montserrat", sans-serif;
   /* font-family: 'Readex Pro', sans-serif; */

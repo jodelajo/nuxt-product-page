@@ -58,7 +58,7 @@ body {
   width: 100vw;
   box-sizing: border-box;
   margin: 0;
-  background-color: rgb(248, 65, 65);
+  background-color: rgb(214, 214, 214);
 }
 .container {
   

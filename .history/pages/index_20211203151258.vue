@@ -1,6 +1,5 @@
 <template>
   <div class="container">
-    <h1>Alle producten</h1>
     <ProductsCardDisplay
       v-for="products in allProducts"
       :key="products.ProductID"
@@ -53,25 +52,16 @@ export default {
 
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;500;700;900&family=Readex+Pro:wght@300;500;700&display=swap");
-
-body {
-  width: 100vw;
-  box-sizing: border-box;
-  margin: 0;
-  background-color: rgb(248, 65, 65);
-}
 .container {
-  
   display: flex;
-  padding: 20px;
+  padding-top: 4rem;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: rgb(214, 214, 214);
+  box-sizing: border-box;
   gap: 20px;
   font-family: "Montserrat", sans-serif;
   /* font-family: 'Readex Pro', sans-serif; */
-}
-.container h1 {
-  margin-top: 100px;
 }
 </style>
