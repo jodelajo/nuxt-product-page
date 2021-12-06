@@ -18,11 +18,14 @@ export default {
   width: 80%;
   background-color: rgba(85, 85, 85, 0.1);
   padding: 10px;
+  min-height: 234px;
+  min-width: 80%;
 }
 
 @media only screen and (min-width: 992px) {
   .product-picture {
     width: 90%;
+    min-width: 234px;
     padding: 20px;
   }
 }

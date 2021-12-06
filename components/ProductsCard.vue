@@ -6,13 +6,14 @@
 
     <h3>{{ products.Brand }}</h3>
     <section class="productWrapper">
-      <ProductPictures
+      
+    <ProductPictures
         v-for="pictures in products.ProductPictures"
         :key="pictures.ProductID + '-Url'"
         :pictures="pictures"
         :altText="products.MainDescription"
       />
-
+  
       <ProductPrices
         v-for="prices in products.ProductPrices.slice(0,1)"
         :key="prices.ProductID + '-price'"
