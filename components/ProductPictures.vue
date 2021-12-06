@@ -16,15 +16,14 @@ export default {
 <style scoped>
 .pics {
   width: 80%;
-  background-color: rgba(85, 85, 85, 0.123);
-  box-shadow: 3px 3px 5px rgba(59, 59, 59, 0.2);
-  border-radius: 6px;
-  padding: 20px;
+  background-color: rgba(85, 85, 85, 0.1);
+  padding: 10px;
 }
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 992px) {
   .pics {
-    width: 60%;
+    width: 90%;
+    padding: 20px;
   }
 }
 </style>

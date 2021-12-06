@@ -1,8 +1,10 @@
 <template>
   <div class="container">
-    <!-- {{products}} -->
-    <h1>{{ products.MainDescription }}</h1>
-    <h3>{{ products.Brand }}</h3>
+    <div class="title">
+      <h1>{{ products.MainDescription }}</h1>
+    </div>
+
+    <h5>{{ products.Brand }}</h5>
     <div class="productWrapper">
       <ProductPictures
         v-for="pictures in products.ProductPictures"
@@ -11,7 +13,7 @@
       />
 
       <ProductPrices
-        v-for="prices in products.ProductPrices"
+        v-for="prices in products.ProductPrices.slice(0,1)"
         :key="prices.ProductID + '-price'"
         :prices="prices"
       />
@@ -45,7 +47,7 @@ export default {
   padding: 0 1rem 1rem 1rem;
   background-color: white;
   column-count: 3;
-  box-shadow: 3px 3px 5px rgba(92, 7, 7, 0.5);
+  box-shadow: 3px 5px 5px rgba(116, 78, 78, 0.1);
 }
 
 .container h1 {
@@ -53,6 +55,11 @@ export default {
   margin-top: 20px;
   margin-bottom: -20px;
 }
+
+.container h5 {
+  color: grey;
+}
+
 .ingredients {
   display: none;
 }
@@ -61,14 +68,11 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* align-items: baseline;
-  justify-content: space-between; */
 }
 
 @media only screen and (min-width: 700px) {
   .container {
     width: 260px;
-
     min-height: 400px;
     padding: 0 3rem 1rem 3rem;
   }

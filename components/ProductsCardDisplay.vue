@@ -1,15 +1,11 @@
 <template>
   <div class="container">
-
     <ProductsCard
-    v-for="products in productsSection"
+      v-for="products in productsSection"
       :key="products.ProductID"
       :products="products"
-    
     />
-   
-    </div>
-
+  </div>
 </template>
 
 <script>
@@ -18,5 +14,4 @@ export default {
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>
