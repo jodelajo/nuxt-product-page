@@ -1,8 +1,6 @@
 <template>
 <div>
-    <!-- {{prices}} -->
-    <!-- if price else RegularPrice -->
-  <p class="price" v-if="RegularPrice">€ {{ prices.RegularPrice }}</p>
+  <p class="price" v-if="prices.RegularPrice">€ {{ prices.RegularPrice }}</p>
    <p class="price" v-else>€ {{ prices.Price }}</p>
 </div>
 
@@ -10,7 +8,13 @@
  
 <script>
 export default {
-  props: ["prices"],
+  props: {
+      prices: {
+          RegularPrice: Number,
+          Price: Number,
+      }
+  },
+
 };
 </script>
 

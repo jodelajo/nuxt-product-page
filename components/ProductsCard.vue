@@ -1,15 +1,16 @@
 <template>
-  <div class="container">
-    <div class="title">
-      <h1>{{ products.MainDescription }}</h1>
-    </div>
+  <article class="productCard">
+    <header class="title">
+      <h2>{{ products.MainDescription }}</h2>
+    </header>
 
-    <h5>{{ products.Brand }}</h5>
-    <div class="productWrapper">
+    <h3>{{ products.Brand }}</h3>
+    <section class="productWrapper">
       <ProductPictures
         v-for="pictures in products.ProductPictures"
         :key="pictures.ProductID + '-Url'"
         :pictures="pictures"
+        :altText="products.MainDescription"
       />
 
       <ProductPrices
@@ -18,16 +19,9 @@
         :prices="prices"
       />
 
-      <!-- <Counter /> -->
-    </div>
-    <div class="ingredients">
-      <ProductsIngredients
-        v-for="(products, index) in products.ProductDeclarations"
-        :key="index"
-        :products="products"
-      />
-    </div>
-  </div>
+    </section>
+   
+  </article>
 </template>
 
 <script>
@@ -37,7 +31,7 @@ export default {
 </script>
 
 <style scoped>
-.container {
+.productCard {
   border-radius: 24px;
   max-width: 260px;
   display: flex;
@@ -50,13 +44,12 @@ export default {
   box-shadow: 3px 5px 5px rgba(116, 78, 78, 0.1);
 }
 
-.container h1 {
+.productCard h2 {
   font-size: 1.3rem;
   margin-top: 20px;
-  margin-bottom: -20px;
 }
 
-.container h5 {
+.productCard h3 {
   color: grey;
 }
 
@@ -71,12 +64,12 @@ export default {
 }
 
 @media only screen and (min-width: 700px) {
-  .container {
+  .productCard {
     width: 260px;
     min-height: 400px;
     padding: 0 3rem 1rem 3rem;
   }
-  .container h1 {
+  .productCard h2 {
     margin-top: 40px;
   }
   .productWrapper {

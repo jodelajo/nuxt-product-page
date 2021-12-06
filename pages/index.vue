@@ -1,15 +1,14 @@
 <template>
-  <div class="container">
+  <main class="container">
     <h1>Alle producten</h1>
     <div class="wrapper">
       <ProductsCardDisplay :productsSection="allProducts" />
     </div>
-  </div>
+  </main>
 </template>
 
 <script>
 export default {
-  methods: {},
   data() {
     return {
       allProducts: [],
