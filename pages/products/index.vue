@@ -3,7 +3,7 @@
   <main class="product-container">
    
     <h1>Alle producten</h1>
- 
+<!-- {{products}} -->
     <div class="wrapper">
       <ProductsCardDisplay :productsSection="products" />
     </div>
@@ -20,22 +20,14 @@ import axios from 'axios'
 export default {
 
  async fetch({store}){
-   console.log('1. dispatch');
+
    const res = await axios.get('https://a1-api.detailresult.nl/v1/assortmentcache/group/281/104?api_key=6d3a42a3-6d93-4f98-838d-bcc0ab2307fd')
-   
-   console.log('2. action');
-   console.log('3. commit');
-   store.commit('init', res.data)
-   
-    // console.log('fetch', res.data);
+    // store.commit('init', res.data)
+    console.log(res.data);
  },
 computed:{
     ...mapState({
-      products: state => {
-        // console.log('6. state/mapState', state );
-        console.log('6. state counter', state.counter);
-        console.log('7. render');
-        return state.products }     
+      products: state => state.products      
     })
   },
 

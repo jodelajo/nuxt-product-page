@@ -1,34 +1,53 @@
 <template>
-  <article class="productCard">
-    <header class="title">
-      <h2>{{ products.MainDescription }}</h2>
-    </header>
-
-    <h3>{{ products.Brand }}</h3>
-    <section class="productWrapper">
-      
-    <ProductPictures
-        v-for="pictures in products.ProductPictures"
-        :key="pictures.ProductID + '-Url'"
-        :pictures="pictures"
-        :altText="products.MainDescription"
-      />
+  <div class="productCard">
   
-      <ProductPrices
-        v-for="prices in products.ProductPrices.slice(0,1)"
-        :key="prices.ProductID + '-price'"
-        :prices="prices"
-      />
+    <!-- <NuxtLink :to="`/products/${products.ProductID}`"> -->
+    <article>
+      <header class="title">
+        <h2>{{ product.MainDescription }}</h2>
+      </header>
 
-    </section>
-   
-  </article>
+      <h3>{{ product.Brand }}</h3>
+      <section class="productWrapper">
+        <ProductPictures
+          v-for="pictures in product.ProductPictures"
+          :key="pictures.ProductID + '-Url'"
+          :pictures="pictures"
+          :altText="product.MainDescription"
+        />
+
+        <div class="price">
+          <ProductPrices
+            v-for="prices in product.ProductPrices.slice(0, 1)"
+            :key="prices.ProductID + '-price'"
+            :prices="prices"
+          />
+        </div>
+        <div class="buttons">
+          <IncDecButtons
+            :product="product"
+           />
+        </div>
+      </section>
+    </article>
+    <!-- </NuxtLink> -->
+  </div>
 </template>
 
 <script>
+import { mapState, mapMutations } from "vuex";
 export default {
-  props: ["products"],
-};
+  
+    props: ['product'],
+    // ...mapState(["products"])
+  
+
+  methods: {
+    ...mapMutations(["addItem"]),
+    ...mapMutations(["increment"]),
+    ...mapMutations(["decrement"]),
+  },
+}
 </script>
 
 <style scoped>
@@ -50,6 +69,14 @@ export default {
   margin-top: 20px;
 }
 
+.title,
+.price {
+  color: rgb(49, 49, 49);
+}
+
+a {
+  text-decoration: none;
+}
 .productCard h3 {
   color: grey;
 }
@@ -62,6 +89,10 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.buttons {
+  display: flex;
 }
 
 @media only screen and (min-width: 700px) {
