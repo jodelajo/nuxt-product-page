@@ -1,40 +1,49 @@
 <template>
-  <div>
-   {{ product }}
-   {{$route.params.id}}
-    <div v-if="product" class="container py-5">
-      <div class="hero-container">
-         
-        <img
-          :src="require(`@/assets/images/${product.image}`)"
-          alt=""
-          class="image"
-        />
-        <div class="info-box">
-          <h1>{{ product.title }}</h1>
-          <p class="snippet">{{ product.snippet }}</p>
-          <BuyButton :product="product" />
-        </div>
-      </div>
+    <div v-if="product" class="productCard">
+      
+     <article>
+      
+      <header class="title">
+        <h2>{{ product.MainDescription }}</h2>
+      </header>
 
-      <div class="description-container">
-        <p>
-          {{ product.description }}
-        </p>
-      </div>
+      <h3>{{ product.Brand }}</h3>
+      <section class="productWrapper">
+        <ProductPictures
+          v-for="pictures in product.ProductPictures"
+          :key="pictures.ProductID"
+          :pictures="pictures"
+          :altText="product.MainDescription"
+        />
+
+        <div class="price">
+          <ProductPrices
+            v-for="prices in product.ProductPrices.slice(0, 1)"
+            :key="prices.ProductID + '-price'"
+            :prices="prices"
+          />
+        </div>
+         </section>
+       
+         
+        <div class="buttons">
+          <IncDecButtons
+            :product="product"
+           />
+        </div>
+     
+    </article>
     </div>
     <div v-else class="container padding">
       page not found
       <!-- <PageNotFound /> -->
     </div>
-  </div>
 </template>
 
 <script>
-import {  mapState } from "vuex";
+import { mapState } from "vuex";
 export default {
   computed: {
-    // ...mapGetters(["product"]),
     ...mapState(["products"]),
     product() {
       return this.$store.getters.getProductById(this.$route.params.id);
@@ -44,63 +53,69 @@ export default {
 </script>
 
 <style scoped>
-.hero-container {
+.productCard {
+  border-radius: 4px;
+  max-width: 260px;
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: space-between;
+  padding: 0 1rem 1rem 1rem;
+  background-color: white;
+  column-count: 3;
+  box-shadow: 2px 2px 3px rgba(161, 161, 161, 0.1);
 }
-.image {
-  width: 59%;
-  height: 25rem;
+
+.productCard h2 {
+  font-size: 1.3rem;
+  margin-top: 20px;
 }
-.info-box {
-  width: 39%;
-  background-color: rgba(207, 201, 201, 0.322);
-  padding: 1rem;
-  border-radius: 0.5rem;
+
+.title,
+.price {
+  color: rgb(49, 49, 49);
 }
-.whats-included-container {
-  border-bottom: 0.1rem solid rgba(128, 128, 128, 0.151);
+
+a {
+  text-decoration: none;
 }
-.description-container {
-  border-bottom: 0.1rem solid rgba(128, 128, 128, 0.151);
-  padding-bottom: 2rem;
-  margin-bottom: 2rem;
-}
-.included-container {
-  margin-top: 1.5rem;
-}
-h1 {
-  font-size: 1.75rem;
-}
-h6 {
-  font-size: 1.15rem;
-  font-weight: 400;
-}
-p {
+.productCard h3 {
   color: grey;
 }
-.snippet {
-  color: rgba(0, 0, 0, 0.774);
-  margin-top: 1rem;
+
+.ingredients {
+  display: none;
 }
-button {
-  width: 100%;
-  border: none;
-  padding: 0.5rem;
-  color: white;
-  font-weight: 700;
-  padding: 1rem 4rem;
-  border-radius: 100rem;
-  background-color: rgb(231, 81, 43);
-  color: white;
-  font-weight: 700;
-  transition: 0.5s;
+.productWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
-.description-container {
-  margin-top: 3rem;
-  color: grey;
+
+.buttons {
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.padding {
-  padding: 10rem 0;
+
+@media only screen and (min-width: 700px) {
+  .productCard {
+    width: 260px;
+    min-height: 400px;
+    padding: 0 3rem 1rem 3rem;
+  }
+  .productCard h2 {
+    margin-top: 40px;
+  }
+  .productWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .ingredients {
+    display: none;
+  }
 }
 </style>

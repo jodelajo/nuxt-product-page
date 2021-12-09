@@ -31,32 +31,23 @@ export default {
  },
 computed:{
     ...mapState({
+
       products: state => {
         // console.log('6. state/mapState', state );
         console.log('6. state counter', state.counter);
+        // console.log('itemCounter', state.itemCounter);
+        console.log('item', state.item);
         console.log('7. render');
-        return state.products }     
+        state.products.products },
+      // item: state => {
+      //   if (state.products.find(product => product.ProductID == id))
+      //  return state.products.item
+      // }    
     })
   },
 
 
 }
-
-
-
-//   data() {
-//     return {
-//       allProducts: [],
-//     };
-//   },
-
-  
-//   async fetch() {
-//     this.allProducts = await fetch(
-//       "https://a1-api.detailresult.nl/v1/assortmentcache/group/281/104?api_key=6d3a42a3-6d93-4f98-838d-bcc0ab2307fd"
-//     ).then((res) => res.json());
-//   },
-// };
 </script>
 
 <style>

@@ -23,8 +23,6 @@ export default {
   font-size: 20px;
 }
 @media only screen and (min-width: 1200px) {
-  .price {
-    font-size: 30px;
-  }
+
 }
 </style>

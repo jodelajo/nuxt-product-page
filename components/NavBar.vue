@@ -2,14 +2,15 @@
   <nav class="navBar">
     <div class="shoppingcart">
       <NuxtLink to="/">home</NuxtLink>
-      <NuxtLink to="/products"
+
+      <!-- <NuxtLink to="/products"
         >Products <span class="sr-only">(current)</span>
-      </NuxtLink>
-      <NuxtLink to="/my-items"> <Basket /> <span>{{ counter }}</span>
-      </NuxtLink><span class="sr-only">(current)</span>
-     
-     
-    
+      </NuxtLink> -->
+      <NuxtLink to="/my-items">
+        <span class="basket">
+          <Basket /> <span class="counter">{{ counter }}</span></span
+        > </NuxtLink
+      ><span class="sr-only">(current)</span>
     </div>
   </nav>
 </template>
@@ -17,25 +18,30 @@
 <script>
 import { mapState } from "vuex";
 export default {
-
-    computed: {
-        ...mapState(['counter'])
-    }
+  computed: {
+    ...mapState(["counter"]),
+  },
 };
 </script>
 
 <style scoped>
 .navBar {
+  position: sticky;
+  top: 0;
   width: 100vw;
   background-color: rgb(56, 56, 56);
   color: white;
   height: 60px;
   display: flex;
-  justify-content: flex-end;
   align-items: center;
+  justify-content: center;
 }
 .shoppingcart {
-  margin-right: 40px;
+  width: 1200px;
+  padding: 0 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .sr-only:not(:focus):not(:active) {
   clip: rect(0 0 0 0);
@@ -52,14 +58,25 @@ export default {
   text-decoration: none;
 }
 
-.shoppingcart a:hover {
+/* .shoppingcart a:hover {
   color: red;
-}
+} */
 .basket {
-  font-size: 20px;
-  height: 48px;
-  width: 48px;
+  position: relative;
+  /* height: 48px;
+  width: 48px; */
+}
+
+.counter {
+  position: absolute;
+  text-align: center;
+  padding-top: 3px;
+  bottom: 16px;
+  left: 30px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: red;
   z-index: 10;
-  color: white;
 }
 </style>

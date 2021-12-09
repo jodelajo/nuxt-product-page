@@ -1,8 +1,7 @@
 <template>
   <div class="productCard">
-  
-    <!-- <NuxtLink :to="`/products/${products.ProductID}`"> -->
     <article>
+      <NuxtLink :to="`/products/${product.ProductID}`">
       <header class="title">
         <h2>{{ product.MainDescription }}</h2>
       </header>
@@ -11,7 +10,7 @@
       <section class="productWrapper">
         <ProductPictures
           v-for="pictures in product.ProductPictures"
-          :key="pictures.ProductID + '-Url'"
+          :key="pictures.ProductID"
           :pictures="pictures"
           :altText="product.MainDescription"
         />
@@ -23,14 +22,17 @@
             :prices="prices"
           />
         </div>
+         </section>
+         </NuxtLink>
+         
         <div class="buttons">
           <IncDecButtons
             :product="product"
            />
         </div>
-      </section>
+     
     </article>
-    <!-- </NuxtLink> -->
+   
   </div>
 </template>
 
@@ -52,7 +54,7 @@ export default {
 
 <style scoped>
 .productCard {
-  border-radius: 24px;
+  border-radius: 4px;
   max-width: 260px;
   display: flex;
   flex-direction: column;
@@ -61,17 +63,19 @@ export default {
   padding: 0 1rem 1rem 1rem;
   background-color: white;
   column-count: 3;
-  box-shadow: 3px 5px 5px rgba(116, 78, 78, 0.1);
+  box-shadow: 2px 2px 3px rgba(161, 161, 161, 0.1);
 }
 
 .productCard h2 {
   font-size: 1.3rem;
-  margin-top: 20px;
+  margin-top: 5px;
 }
 
 .title,
 .price {
+  padding-top: 10px;
   color: rgb(49, 49, 49);
+  font-size: 30px;
 }
 
 a {
@@ -92,7 +96,10 @@ a {
 }
 
 .buttons {
+  padding: 10px 0;
   display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 @media only screen and (min-width: 700px) {
@@ -102,7 +109,7 @@ a {
     padding: 0 3rem 1rem 3rem;
   }
   .productCard h2 {
-    margin-top: 40px;
+    /* margin-top: 40px; */
   }
   .productWrapper {
     display: flex;
