@@ -34,19 +34,15 @@ computed:{
 
       products: state => {
         // console.log('6. state/mapState', state );
+         console.log('shoppingcart', state.shoppingcart);
+        //  console.log('price', state.Price);
         console.log('6. state counter', state.counter);
-        // console.log('itemCounter', state.itemCounter);
-        console.log('item', state.item);
+        // console.log('item', state.item);
         console.log('7. render');
+       
         state.products.products },
-      // item: state => {
-      //   if (state.products.find(product => product.ProductID == id))
-      //  return state.products.item
-      // }    
     })
   },
-
-
 }
 </script>
 

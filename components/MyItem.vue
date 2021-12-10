@@ -2,28 +2,29 @@
   <div class="item-container">
     <section class="productWrapper">
       <h4>{{ item.MainDescription }}</h4>
-      <div class="product-image">
-        <ProductPictures
-          v-for="pictures in item.ProductPictures"
-          :key="pictures.ProductID"
-          :pictures="pictures"
-          :altText="item.MainDescription"
-        />
-      </div>
-
       <div class="price">
+        <h5>prijs per stuk</h5>
         <ProductPrices
           v-for="prices in item.ProductPrices.slice(0, 1)"
           :key="prices.ProductID + '-price'"
           :prices="prices"
         />
+        <h5>Aantal items</h5>
+        <IncDecButtons :product="item" :quantity="item.quantity" />
+
+        <h5>totaalprijs</h5>
+        <CartPrices
+          v-for="prices in item.ProductPrices.slice(0, 1)"
+          :key="prices.ProductID"
+          :prices="prices"
+          :quantity="item.quantity"
+        />
       </div>
+
       <button
         @click="
           () => {
-            deleteItem(item.ProductID);
-            decrement();
-            
+            deleteProduct(item.ProductID);
           }
         "
       >
@@ -36,10 +37,9 @@
 <script>
 import { mapMutations } from "vuex";
 export default {
-  props: ["item"],
-
+  props: ["item", "quantity"],
   methods: {
-    ...mapMutations(["deleteItem", "decrement"]),
+    ...mapMutations(["deleteProduct" ]),
   },
 };
 </script>
@@ -54,7 +54,7 @@ export default {
 }
 .productWrapper {
   display: flex;
-  
+  justify-content: space-between;
   align-items: center;
   border-radius: 4px;
   padding: 20px;
@@ -69,7 +69,9 @@ export default {
 }
 
 .price {
-  width: 200px;
+  width: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
-
 </style>

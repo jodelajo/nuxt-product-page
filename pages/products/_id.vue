@@ -1,12 +1,9 @@
 <template>
-    <div v-if="product" class="productCard">
-      
-     <article>
-      
+  <div v-if="product" class="productCard">
+    <article>
       <header class="title">
         <h2>{{ product.MainDescription }}</h2>
       </header>
-
       <h3>{{ product.Brand }}</h3>
       <section class="productWrapper">
         <ProductPictures
@@ -15,7 +12,6 @@
           :pictures="pictures"
           :altText="product.MainDescription"
         />
-
         <div class="price">
           <ProductPrices
             v-for="prices in product.ProductPrices.slice(0, 1)"
@@ -23,21 +19,13 @@
             :prices="prices"
           />
         </div>
-         </section>
-       
-         
-        <div class="buttons">
-          <IncDecButtons
-            :product="product"
-           />
-        </div>
-     
+      </section>
+      <div class="buttons">
+        <IncDecButtons :product="product" />
+      </div>
     </article>
-    </div>
-    <div v-else class="container padding">
-      page not found
-      <!-- <PageNotFound /> -->
-    </div>
+  </div>
+  <div v-else class="container padding">page not found</div>
 </template>
 
 <script>

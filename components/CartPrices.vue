@@ -1,12 +1,13 @@
 <template>
 <div>  
-   <p class="price">€ {{ prices.Price }}</p>
+   <p class="price" >€ {{ quantity * prices.Price }}</p>
 </div>
 </template>
- 
+
 <script>
 export default {
   props: {
+    quantity: Number,
       prices: {
           Price: Number,
       }

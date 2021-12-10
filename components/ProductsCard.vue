@@ -2,54 +2,51 @@
   <div class="productCard">
     <article>
       <NuxtLink :to="`/products/${product.ProductID}`">
-      <header class="title">
-        <h2>{{ product.MainDescription }}</h2>
-      </header>
-
-      <h3>{{ product.Brand }}</h3>
-      <section class="productWrapper">
-        <ProductPictures
-          v-for="pictures in product.ProductPictures"
-          :key="pictures.ProductID"
-          :pictures="pictures"
-          :altText="product.MainDescription"
-        />
-
-        <div class="price">
-          <ProductPrices
-            v-for="prices in product.ProductPrices.slice(0, 1)"
-            :key="prices.ProductID + '-price'"
-            :prices="prices"
+        <header class="title">
+          <h2>{{ product.MainDescription }}</h2>
+        </header>
+        <h3>{{ product.Brand }}</h3>
+        <section class="productWrapper">
+          <ProductPictures
+            v-for="pictures in product.ProductPictures"
+            :key="pictures.ProductID"
+            :pictures="pictures"
+            :altText="product.MainDescription"
           />
-        </div>
-         </section>
-         </NuxtLink>
-         
-        <div class="buttons">
-          <IncDecButtons
-            :product="product"
-           />
-        </div>
-     
+          <div class="price">
+            <ProductPrices
+              v-for="prices in product.ProductPrices.slice(0, 1)"
+              :key="prices.ProductID + '-price'"
+              :prices="prices"
+            />
+          </div>
+        </section>
+      </NuxtLink>
+
+      <div class="buttons">
+        <IncDecButtons :product="product" :quantity="quantity" />
+      </div>
     </article>
-   
   </div>
 </template>
 
 <script>
-import { mapState, mapMutations } from "vuex";
+import { mapState } from "vuex";
 export default {
-  
-    props: ['product'],
-    // ...mapState(["products"])
-  
+  props: ["product"],
 
-  methods: {
-    ...mapMutations(["addItem"]),
-    ...mapMutations(["increment"]),
-    ...mapMutations(["decrement"]),
+  computed: {
+    ...mapState({
+      quantity: function (state) {
+        return (
+          state.shoppingcart.find(
+            (item) => item.ProductID == this.product.ProductID
+          )?.quantity || 0
+        );
+      },
+    }),
   },
-}
+};
 </script>
 
 <style scoped>
@@ -98,6 +95,7 @@ a {
 .buttons {
   padding: 10px 0;
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
 }
@@ -108,9 +106,7 @@ a {
     min-height: 400px;
     padding: 0 3rem 1rem 3rem;
   }
-  .productCard h2 {
-    /* margin-top: 40px; */
-  }
+
   .productWrapper {
     display: flex;
     align-items: center;

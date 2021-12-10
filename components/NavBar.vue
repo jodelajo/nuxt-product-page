@@ -2,13 +2,9 @@
   <nav class="navBar">
     <div class="shoppingcart">
       <NuxtLink to="/">home</NuxtLink>
-
-      <!-- <NuxtLink to="/products"
-        >Products <span class="sr-only">(current)</span>
-      </NuxtLink> -->
       <NuxtLink to="/my-items">
         <span class="basket">
-          <Basket /> <span class="counter">{{ counter }}</span></span
+          <Basket /> <span class="counter">{{ totalProductsCount }}</span></span
         > </NuxtLink
       ><span class="sr-only">(current)</span>
     </div>
@@ -16,10 +12,10 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapGetters} from "vuex";
 export default {
   computed: {
-    ...mapState(["counter"]),
+    ...mapGetters(["totalProductsCount"]),
   },
 };
 </script>
@@ -57,16 +53,9 @@ export default {
   color: white;
   text-decoration: none;
 }
-
-/* .shoppingcart a:hover {
-  color: red;
-} */
 .basket {
   position: relative;
-  /* height: 48px;
-  width: 48px; */
 }
-
 .counter {
   position: absolute;
   text-align: center;

@@ -1,21 +1,19 @@
 <template>
-  <div>
+  <div class="buttonWrapper">
     <button 
       @click="
         () => {
-          decrement();
-          deleteItem(product.ProductID);
+           deleteItem(product.ProductID);
         }
       "
     >
       -
     </button>
+    <p>{{ quantity }}</p>
     <button
       @click="
         () => {
-          increment();
-          itemIncrement(product.ProductID)
-          addItem(product.ProductID);
+          addItem(product.ProductID);        
         }
       "
     >
@@ -25,11 +23,12 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from "vuex";
+import { mapMutations } from "vuex";
 export default {
-  props: ["product"],
+  props: ["product", "quantity"],
+
   methods: {
-    ...mapMutations(["addItem", "increment", "decrement", "deleteItem", "itemIncrement" ]),
+    ...mapMutations(["addItem",  "deleteItem" ]),
   },
 };
 </script>
@@ -38,5 +37,11 @@ export default {
 button {
     width: 30px;
     height: 25px;
+}
+
+.buttonWrapper {
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }
 </style>

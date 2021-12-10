@@ -12,8 +12,7 @@
 <script>
 import { mapState } from 'vuex';
 export default {
-computed: mapState(["products"])
+computed: mapState(["products"]),
 }
 </script>
 
-<style scoped></style>
