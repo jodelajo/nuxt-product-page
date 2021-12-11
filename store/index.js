@@ -12,7 +12,7 @@ export const getters = {
     for (const product of state.shoppingcart) {
       total = total + product.quantity * product.ProductPrices[0].Price;
     }
-    return total;
+    return total.toFixed(2);
   },
   totalProductsCount: (state) => {
     let count = 0;
@@ -20,7 +20,16 @@ export const getters = {
         count = count + product.quantity
     }
     return count;
+  },
+  priceTwoDecimal: (state) => (id) =>{
+    let item = state.shoppingcart.find((product) => product.ProductID.ProductPrices[0].Price == id)
+    return item.toFixed(2)
   }
+//   setToTwoDigits: (state) =>(id) => {
+//     let item = state.shoppingcart.find((product) => product.ProductID == id);
+//     return item.ProductPrices.Price.toFixed(2)
+//   }
+
 };
 
 export const mutations = {
@@ -42,14 +51,12 @@ export const mutations = {
     if (item.quantity > 1) {
       item.quantity = item.quantity - 1;
     } else {
-      state.shoppingcart.splice(item, 1);
+        state.shoppingcart = state.shoppingcart.filter((item) => item.ProductID !== id)
     }
   },
 
   deleteProduct(state, id) {
-    let item = state.shoppingcart.find((product) => product.ProductID == id);
-    state.shoppingcart.splice(item, 1);
-    state.counter = state.counter - item.quantity;
+    state.shoppingcart = state.shoppingcart.filter((item) => item.ProductID !== id)
   },
 };
 

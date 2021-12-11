@@ -21,7 +21,10 @@
         </div>
       </section>
       <div class="buttons">
-        <IncDecButtons :product="product" />
+        <IncDecButtons
+          :product="product"
+          :quantity="quantity"
+        />
       </div>
     </article>
   </div>
@@ -31,12 +34,22 @@
 <script>
 import { mapState } from "vuex";
 export default {
-  computed: {
-    ...mapState(["products"]),
-    product() {
+  props: ["products"],
+   computed: {
+    ...mapState({
+      quantity: function (state) {
+        return (
+          state.shoppingcart.find(
+            (item) => item.ProductID == this.product.ProductID
+          )?.quantity || 0
+        );
+      },
+    }),
+     product() {
       return this.$store.getters.getProductById(this.$route.params.id);
     },
   },
+  
 };
 </script>
 

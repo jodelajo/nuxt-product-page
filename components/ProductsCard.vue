@@ -24,7 +24,7 @@
       </NuxtLink>
 
       <div class="buttons">
-        <IncDecButtons :product="product" :quantity="quantity" />
+        <IncDecButtons :product="product" :quantity="quantity" :shoppingcart="shoppingcart" />
       </div>
     </article>
   </div>
@@ -33,7 +33,7 @@
 <script>
 import { mapState } from "vuex";
 export default {
-  props: ["product"],
+  props: ["product", "shoppingcart"],
 
   computed: {
     ...mapState({
@@ -52,7 +52,7 @@ export default {
 <style scoped>
 .productCard {
   border-radius: 4px;
-  max-width: 260px;
+  max-width: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
