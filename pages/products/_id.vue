@@ -1,41 +1,41 @@
 <template>
-  <div class="productCard">
+  <div v-if="product" class="productCard">
     <article>
-      <NuxtLink :to="`/products/${product.ProductID}`">
-        <header class="title">
-          <h2>{{ product.MainDescription }}</h2>
-        </header>
-        <h3>{{ product.Brand }}</h3>
-        <section class="productWrapper">
-          <ProductPictures
-            v-for="pictures in product.ProductPictures"
-            :key="pictures.ProductID"
-            :pictures="pictures"
-            :altText="product.MainDescription"
+      <header class="title">
+        <h2>{{ product.MainDescription }}</h2>
+      </header>
+      <h3>{{ product.Brand }}</h3>
+      <section class="productWrapper">
+        <ProductPictures
+          v-for="pictures in product.ProductPictures"
+          :key="pictures.ProductID"
+          :pictures="pictures"
+          :altText="product.MainDescription"
+        />
+        <div class="price">
+          <ProductPrices
+            v-for="prices in product.ProductPrices.slice(0, 1)"
+            :key="prices.ProductID + '-price'"
+            :prices="prices"
           />
-          <div class="price">
-            <ProductPrices
-              v-for="prices in product.ProductPrices.slice(0, 1)"
-              :key="prices.ProductID + '-price'"
-              :prices="prices"
-            />
-          </div>
-        </section>
-      </NuxtLink>
-
+        </div>
+      </section>
       <div class="buttons">
-        <IncDecButtons :product="product" :quantity="quantity" :shoppingcart="shoppingcart" />
+        <IncDecButtons
+          :product="product"
+          :quantity="quantity"
+        />
       </div>
     </article>
   </div>
+  <div v-else class="container padding">page not found</div>
 </template>
 
 <script>
 import { mapState } from "vuex";
 export default {
-  props: ["product", "shoppingcart"],
-
-  computed: {
+  props: ["products"],
+   computed: {
     ...mapState({
       quantity: function (state) {
         return (
@@ -45,14 +45,18 @@ export default {
         );
       },
     }),
+     product() {
+      return this.$store.getters.getProductById(this.$route.params.id);
+    },
   },
+  
 };
 </script>
 
 <style scoped>
 .productCard {
   border-radius: 4px;
-  max-width: 80%;
+  max-width: 260px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -65,14 +69,12 @@ export default {
 
 .productCard h2 {
   font-size: 1.3rem;
-  margin-top: 5px;
+  margin-top: 20px;
 }
 
 .title,
 .price {
-  padding-top: 10px;
   color: rgb(49, 49, 49);
-  font-size: 30px;
 }
 
 a {
@@ -95,7 +97,6 @@ a {
 .buttons {
   padding: 10px 0;
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: center;
 }
@@ -106,7 +107,9 @@ a {
     min-height: 400px;
     padding: 0 3rem 1rem 3rem;
   }
-
+  .productCard h2 {
+    margin-top: 40px;
+  }
   .productWrapper {
     display: flex;
     align-items: center;

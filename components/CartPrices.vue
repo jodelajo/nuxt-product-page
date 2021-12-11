@@ -1,16 +1,16 @@
 <template>
 <div>  
-   <p class="price">€ {{ prices.Price }}</p>
+   <p class="price" >€ {{ quantity * nicePrice }}</p>
 </div>
 </template>
- 
+
 <script>
 export default {
-  props: {
-      prices: {
-          Price: Number,
-      }
-  },
+  props: ["quantity", "prices"],
+  computed: {
+    nicePrice(){ 
+      return this.prices.Price.toFixed(2)}
+  }
 };
 </script>
 

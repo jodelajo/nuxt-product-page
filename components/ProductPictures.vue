@@ -16,7 +16,7 @@ export default {
 <style scoped>
 .product-picture {
   width: 80%;
-  background-color: rgba(85, 85, 85, 0.1);
+  background-color: rgba(240, 240, 240, 0.6);
   padding: 10px;
   min-height: 234px;
   min-width: 80%;

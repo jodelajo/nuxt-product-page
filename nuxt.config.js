@@ -1,5 +1,12 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
+
+  vue: {
+    config: {
+      productionTip: false,
+      devtools: true
+    }
+  },
   head: {
     title: 'product-page',
     htmlAttrs: {
@@ -22,6 +29,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+  
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
