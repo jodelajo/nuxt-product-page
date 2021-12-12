@@ -122,6 +122,8 @@ export default {
 }
   .totalPrice {
     display: flex;
+    align-items: center;
+    column-gap: 6px;
   }
 }
 

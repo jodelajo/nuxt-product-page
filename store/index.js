@@ -1,6 +1,7 @@
 export const state = () => ({
   shoppingcart: [],
   products: [],
+  offerProducts: []
 });
 
 export const getters = {
@@ -21,15 +22,6 @@ export const getters = {
     }
     return count;
   },
-  priceTwoDecimal: (state) => (id) =>{
-    let item = state.shoppingcart.find((product) => product.ProductID.ProductPrices[0].Price == id)
-    return item.toFixed(2)
-  }
-//   setToTwoDigits: (state) =>(id) => {
-//     let item = state.shoppingcart.find((product) => product.ProductID == id);
-//     return item.ProductPrices.Price.toFixed(2)
-//   }
-
 };
 
 export const mutations = {
