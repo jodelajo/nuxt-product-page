@@ -1,7 +1,7 @@
 <template>
   <div class="main-container">
     <main class="product-container">
-      <div>
+      <aside class="aside">
         <ul>
           <li
             v-for="group in Object.keys(subGroups)"
@@ -11,7 +11,17 @@
             {{ group }} : {{ subGroups[group] }}
           </li>
         </ul>
-      </div>
+
+        <ul>
+          <li
+            v-for="brand in Object.keys(brandGroup)"
+            :key="brand"
+            v-on:click="selectBrand(brand)"
+          >
+            {{ brand }} : {{ brandGroup[brand] }}
+          </li>
+        </ul>
+      </aside>
       <div>
         <h1>Alle producten</h1>
 
@@ -43,6 +53,7 @@ export default {
       toggle: false,
       sort: "alphabetical",
       displayGroup: "all",
+      displayBrand: "all",
     };
   },
   async fetch({ store }) {
@@ -55,6 +66,9 @@ export default {
     selectGroup(group) {
       console.log("hallo", this);
       this.displayGroup = group;
+    },
+    selectBrand(brand) {
+      this.displayBrand = brand;
     },
   },
   computed: {
@@ -88,6 +102,21 @@ export default {
           });
         };
         return belongsToSelectedGroup;
+      }
+    },
+    brandFilter() {
+      if (this.displayBrand === "all") {
+        const isAProduct = (item) => {
+          if (item.ProductID) {
+            return true;
+          }
+        };
+        return isAProduct;
+      } else {
+        const belongsToSelectedBrand = (item) => {
+          return item.Brand === this.displayBrand;
+        };
+        return belongsToSelectedBrand;
       }
     },
     sortDirection() {
@@ -137,20 +166,14 @@ export default {
     ...mapState({
       products(state) {
         return state.products
+          .filter(this.brandFilter)
           .filter(this.groupFilter)
           .filter(this.productFilter)
           .sort(this.sortDirection);
       },
       subGroups(state) {
-        // let groups = {
-        //   "Overige koekjes": 68,
-        //   "Biscuits": 7,
-        // }
         let groups = {};
         for (const product of state.products) {
-          // Als we een nieuwe subgroup tegenkomen, voeg het toe aan het object met description als key
-          // als de subgroep al in het object zit, dan doen we subgroep + 1
-          // groups = groups.concat(product.WebSubGroups)
           for (const group of product.WebSubGroups) {
             if (!groups[group.Description]) {
               groups[group.Description] = 1;
@@ -159,13 +182,25 @@ export default {
             }
           }
         }
-        console.log(groups);
         // sorteer op groepen met de meeste producten
         const sortedGroups = Object.fromEntries(
           Object.entries(groups).sort(([, a], [, b]) => b - a)
         );
-        console.log(sortedGroups);
         return sortedGroups;
+      },
+      brandGroup(state) {
+        let brands = {};
+        for (const product of state.products) {
+          if (!brands[product.Brand]) {
+            brands[product.Brand] = 1;
+          } else if (brands[product.Brand]) {
+            brands[product.Brand]++;
+          }
+        }
+        const sortedBrands = Object.fromEntries(
+          Object.entries(brands).sort(([, a], [, b]) => b - a)
+        );
+        return sortedBrands;
       },
     }),
   },
@@ -195,6 +230,9 @@ export default {
   text-align: center;
 }
 
+.aside {
+  display: flex;
+}
 @media only screen and (min-width: 800px) {
   .product-container {
     width: 800px;
