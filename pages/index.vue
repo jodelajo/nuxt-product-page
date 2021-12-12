@@ -64,7 +64,26 @@ export default {
             }
             return 0;
           };
-
+        case "priceASC":
+          return (a, b) => {
+            if (a.ProductPrices[0].Price < b.ProductPrices[0].Price) {
+              return -1;
+            }
+            if (a.ProductPrices[0].Price > b.ProductPrices[0].Price) {
+              return 1;
+            }
+            return 0;
+          };
+        case "priceDESC":
+          return (a, b) => {
+            if (b.ProductPrices[0].Price < a.ProductPrices[0].Price) {
+              return -1;
+            }
+            if (b.ProductPrices[0].Price > a.ProductPrices[0].Price) {
+              return 1;
+            }
+            return 0;
+          };
         default:
           return (a, b) => {
             if (a.MainDescription < b.MainDescription) {
@@ -80,7 +99,9 @@ export default {
     ...mapState({
       products(state) {
         console.log(this.productFilter);
-        return state.products.filter(this.productFilter).sort(this.sortDirection);
+        return state.products
+          .filter(this.productFilter)
+          .sort(this.sortDirection);
       },
     }),
   },
