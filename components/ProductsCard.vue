@@ -24,7 +24,11 @@
       </NuxtLink>
 
       <div class="buttons">
-        <IncDecButtons :product="product" :quantity="quantity" :shoppingcart="shoppingcart" />
+        <IncDecButtons
+          :product="product"
+          :quantity="quantity"
+          :shoppingcart="shoppingcart"
+        />
       </div>
     </article>
   </div>
@@ -59,12 +63,13 @@ export default {
   justify-content: space-between;
   padding: 0 1rem 1rem 1rem;
   background-color: white;
+  border: 1px solid rgba(128, 128, 128, 0.2);
   column-count: 3;
   box-shadow: 2px 2px 3px rgba(161, 161, 161, 0.1);
 }
 
 .productCard h2 {
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   margin-top: 5px;
 }
 
@@ -79,6 +84,7 @@ a {
   text-decoration: none;
 }
 .productCard h3 {
+  font-size: 0.9rem;
   color: grey;
 }
 
@@ -103,7 +109,7 @@ a {
 @media only screen and (min-width: 700px) {
   .productCard {
     width: 260px;
-    min-height: 400px;
+    height: 400px;
     padding: 0 3rem 1rem 3rem;
   }
 

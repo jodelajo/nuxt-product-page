@@ -1,45 +1,64 @@
 <template>
   <div class="main-container">
-    <main class="product-container">
+    <h1>Alle producten</h1>
+    <div class="main-wrapper">
       <aside class="aside">
-        <ul>
-          <li
-            v-for="group in Object.keys(subGroups)"
-            :key="group"
-            v-on:click="selectGroup(group)"
-          >
-            {{ group }} : {{ subGroups[group] }}
-          </li>
-        </ul>
+        <div class="deselect">
+          <div class="deselectTitle">
+            <h3>Reset filters</h3>
+          </div>
+          <div class="deselectButton">
+            <button v-on:click="deselect()">x</button>
+          </div>
+        </div>
 
-        <ul>
-          <li
-            v-for="brand in Object.keys(brandGroup)"
-            :key="brand"
-            v-on:click="selectBrand(brand)"
-          >
-            {{ brand }} : {{ brandGroup[brand] }}
-          </li>
-        </ul>
+        <div class="soorten">
+          <h3>SOORTEN</h3>
+          <ul>
+            <li
+              v-for="group in Object.keys(subGroups)"
+              :key="group"
+              v-on:click="selectGroup(group)"
+            >
+              {{ group }} <span class="subgroup">({{ subGroups[group] }})</span>
+            </li>
+          </ul>
+        </div>
+        <div class="offers">
+          <h3>AANBIEDINGEN</h3>
+          <div class="offer-toggle">
+            <input v-model="toggle" type="checkbox" id="toggle" name="toggle" />
+            <label for="toggle">alleen aanbiedingen</label>
+          </div>
+        </div>
+        <div class="merken">
+          <h3>MERKEN</h3>
+          <ul>
+            <li
+              v-for="brand in Object.keys(brandGroup)"
+              :key="brand"
+              v-on:click="selectBrand(brand)"
+            >
+              {{ brand }}
+              <span class="subgroup"> ({{ brandGroup[brand] }})</span>
+            </li>
+          </ul>
+        </div>
       </aside>
-      <div>
-        <h1>Alle producten</h1>
-
-        <div class="">
-          <input v-model="toggle" type="checkbox" id="toggle" name="toggle" />
-          <label for="toggle">{{ toggle }}</label>
-          <select v-model="sort" name="sort" id="sort">
-            <option value="alphabetical">Sorteer op</option>
-            <option value="alphabetical">A-Z</option>
-            <option value="priceASC">Prijs oplopend</option>
-            <option value="priceDESC">Prijs aflopend</option>
-          </select>
+      <main class="product-container">
+        <div class="sort-wrapper">
+          <div class="sort">
+            <select v-model="sort" name="sort" id="sort">
+              <option value="alphabetical">Sorteer op</option>
+              <option value="alphabetical">A-Z</option>
+              <option value="priceASC">Prijs oplopend</option>
+              <option value="priceDESC">Prijs aflopend</option>
+            </select>
+          </div>
         </div>
-        <div class="wrapper">
-          <ProductsCardDisplay :products="products" />
-        </div>
-      </div>
-    </main>
+        <ProductsCardDisplay :products="products" />
+      </main>
+    </div>
   </div>
 </template>
 
@@ -64,11 +83,15 @@ export default {
   },
   methods: {
     selectGroup(group) {
-      console.log("hallo", this);
       this.displayGroup = group;
     },
     selectBrand(brand) {
       this.displayBrand = brand;
+    },
+    deselect() {
+      this.displayBrand = "all";
+      this.displayGroup = "all";
+      this.toggle = false;
     },
   },
   computed: {
@@ -209,38 +232,131 @@ export default {
 
 <style>
 .main-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  margin: 0 auto;
+  padding-top: 30px;
+  background-color: white;
 }
-.product-container {
-  width: 300px;
-  display: flex;
-  justify-content: center;
-
-  gap: 20px;
-  flex-wrap: wrap;
-}
-.wrapper {
-  display: flex;
-  flex-direction: row;
-}
-.product-container h1 {
-  margin-top: 80px;
+.main-container h1 {
   text-align: center;
 }
+.subgroup {
+  color: gray;
+}
 
-.aside {
+.main-wrapper {
   display: flex;
+  align-items: flex-start;
+}
+.product-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-start;
+  width: 100%;
+  height: auto;
+}
+.sort-wrapper {
+  display: flex;
+  width: 100%;
+  padding: 10px 50px 0 0;
+  justify-content: flex-end;
+}
+
+#sort {
+  height: 30px;
+  width: 140px;
+}
+.offer-toggle {
+  padding: 20px 0 20px 20px;
+  border-top: 1px solid rgb(73, 73, 73);
+}
+.aside {
+  padding: 50px 30px 0 30px;
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  row-gap: 30px;
+  width: 30%;
+  line-height: 1.5;
+}
+.aside h3 {
+  padding-left: 10px;
+}
+.aside ul {
+  padding: 20px 0 20px 20px;
+  border-top: 1px solid rgb(73, 73, 73);
+}
+.aside ul li {
+  list-style: none;
+}
+.deselect {
+  display: flex;
+  align-items: center;
+  /* margin-bottom: -20px; */
+}
+.deselectTitle {
+  padding-right: 14px;
+}
+.deselectButton {
+  margin-top: -5px;
 }
 @media only screen and (min-width: 800px) {
-  .product-container {
+  /* .product-container {
     width: 800px;
-  }
+  } */
 }
 @media only screen and (min-width: 1200px) {
-  .product-container {
+  .main-container {
     width: 1200px;
+  }
+  .main-wrapper {
+    display: flex;
+    align-items: flex-start;
+  }
+  .product-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+  }
+  .sort-wrapper {
+    display: flex;
+    height: 60px;
+    width: 100%;
+    padding: 10px 50px 0 0;
+    justify-content: flex-end;
+  }
+
+  #sort {
+    height: 30px;
+    width: 140px;
+  }
+  .offer-toggle {
+    padding: 20px 0 20px 20px;
+    border-top: 1px solid rgb(73, 73, 73);
+  }
+  .aside {
+    padding: 50px 30px 0 30px;
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    row-gap: 30px;
+    width: 30%;
+    line-height: 1.5;
+  }
+  .aside h3 {
+    padding: 30px 0 10px 10px;
+  }
+  .aside ul {
+    padding: 20px 0 20px 20px;
+    border-top: 1px solid rgb(73, 73, 73);
+  }
+  .aside ul li {
+    list-style: none;
   }
 }
 </style>

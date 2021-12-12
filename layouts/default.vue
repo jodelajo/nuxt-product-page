@@ -1,6 +1,6 @@
 <template>
   <div>
-   <NavBar />
+    <NavBar />
     <Nuxt />
   </div>
 </template>
@@ -11,13 +11,10 @@
 body {
   box-sizing: border-box;
   margin: 0;
-  background-color: rgba(223, 215, 217, 0.1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-   font-family: "Montserrat", sans-serif;
+  padding: 0;
+  background-color: rgba(179, 177, 177, 0.096);
+  font-family: "Montserrat", sans-serif;
 }
-
 
 *,
 *::before,
