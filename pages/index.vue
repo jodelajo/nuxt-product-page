@@ -5,6 +5,12 @@
       <div class="">
         <input v-model="toggle" type="checkbox" id="toggle" name="toggle" />
         <label for="toggle">{{ toggle }}</label>
+        <select v-model="sort" name="sort" id="sort">
+          <option value="alphabetical">Sorteer op</option>
+          <option value="alphabetical">A-Z</option>
+          <option value="priceASC">Prijs oplopend</option>
+          <option value="priceDESC">Prijs aflopend</option>
+        </select>
       </div>
       <div class="wrapper">
         <ProductsCardDisplay :products="products" />
@@ -21,6 +27,7 @@ export default {
   data() {
     return {
       toggle: false,
+      sort: "alphabetical",
     };
   },
   async fetch({ store }) {
@@ -42,13 +49,38 @@ export default {
             return true;
           }
         };
-        return isAProduct
+        return isAProduct;
+      }
+    },
+    sortDirection() {
+      switch (this.sort) {
+        case "alphabetical":
+          return (a, b) => {
+            if (a.MainDescription < b.MainDescription) {
+              return -1;
+            }
+            if (a.MainDescription > b.MainDescription) {
+              return 1;
+            }
+            return 0;
+          };
+
+        default:
+          return (a, b) => {
+            if (a.MainDescription < b.MainDescription) {
+              return -1;
+            }
+            if (a.MainDescription > b.MainDescription) {
+              return 1;
+            }
+            return 0;
+          };
       }
     },
     ...mapState({
       products(state) {
         console.log(this.productFilter);
-        return state.products.filter(this.productFilter);
+        return state.products.filter(this.productFilter).sort(this.sortDirection);
       },
     }),
   },
