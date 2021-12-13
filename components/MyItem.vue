@@ -70,7 +70,8 @@ export default {
   min-width: 300px;
   max-width: 500px;
   /* height: 100px; */
-  background-color: rgba(214, 214, 214, 0.3);
+  background-color: white;
+  border: var(--colors-border);
 }
 .left,
 .right {
@@ -109,7 +110,7 @@ export default {
     max-width: 900px;
   }
   .title {
-      width: 200px;
+    width: 200px;
   }
   .price {
     width: 120px;
@@ -117,9 +118,9 @@ export default {
     align-items: center;
     column-gap: 10px;
   }
-.left {
+  .left {
     flex-direction: row;
-}
+  }
   .totalPrice {
     display: flex;
     align-items: center;

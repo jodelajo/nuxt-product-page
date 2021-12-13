@@ -1,7 +1,7 @@
 <template>
   <div class="buttonWrapper">
     <button
-    class="minButton"
+      class="minButton"
       :disabled="quantity <= 0"
       @click="
         () => {
@@ -49,10 +49,10 @@ button {
   gap: 6px;
 }
 .minButton {
-    background-color: rgba(255, 174, 174, 0.1);
+  background-color: rgba(255, 174, 174, 0.3);
 }
 .greenButton {
-    color: white;
+  color: white;
   background-color: rgb(51, 221, 51);
 }
 </style>

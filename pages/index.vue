@@ -2,7 +2,7 @@
   <div class="main-container">
     <h1>Alle producten</h1>
     <div class="main-wrapper">
-      <aside class="aside">
+      <aside>
         <div class="deselect">
           <div class="deselectTitle">
             <h3>Reset filters</h3>
@@ -14,28 +14,43 @@
 
         <div class="soorten">
           <h3>SOORTEN</h3>
-          <ul>
+          <ul v-if="!toggleLong">
             <li
-              v-for="group in Object.keys(subGroups)"
+              v-for="group in Object.keys(subGroups).slice(0, 3)"
               :key="group"
-              v-on:click="selectGroup(group)"
+              v-bind:class="{ selected: group === displayGroup }"
             >
-              {{ group }} <span class="subgroup">({{ subGroups[group] }})</span>
+              <span v-on:click="selectGroup(group)">{{ group }}</span>
+              <span class="subgroup">({{ subGroups[group] }})</span>
+              <button
+                v-if="group === displayGroup"
+                v-on:click="selectGroup('all')"
+              >
+                x
+              </button>
             </li>
+          </ul>
+          <ul>
+            <a href="">Toon meer</a>
           </ul>
         </div>
         <div class="offers">
           <h3>AANBIEDINGEN</h3>
-          <div class="offer-toggle">
-            <input v-model="toggle" type="checkbox" id="toggle" name="toggle" />
-            <label for="toggle">alleen aanbiedingen</label>
+          <div>
+            <input
+              v-model="toggleOffer"
+              type="checkbox"
+              id="toggleOffer"
+              name="toggleOffer"
+            />
+            <label for="toggleOffer">alleen aanbiedingen</label>
           </div>
         </div>
         <div class="merken">
           <h3>MERKEN</h3>
           <ul>
             <li
-              v-for="brand in Object.keys(brandGroup)"
+              v-for="brand in Object.keys(brandGroup).slice(0, 10)"
               :key="brand"
               v-on:click="selectBrand(brand)"
             >
@@ -43,16 +58,19 @@
               <span class="subgroup"> ({{ brandGroup[brand] }})</span>
             </li>
           </ul>
+          <ul>
+            <a href="">Toon meer</a>
+          </ul>
         </div>
       </aside>
       <main class="product-container">
         <div class="sort-wrapper">
           <div class="sort">
             <select v-model="sort" name="sort" id="sort">
-              <option value="alphabetical">Sorteer op</option>
-              <option value="alphabetical">A-Z</option>
-              <option value="priceASC">Prijs oplopend</option>
-              <option value="priceDESC">Prijs aflopend</option>
+              <option class="option" value="alphabetical">Sorteer op</option>
+              <option class="option" value="alphabetical">A-Z</option>
+              <option class="option" value="priceASC">Prijs oplopend</option>
+              <option class="option" value="priceDESC">Prijs aflopend</option>
             </select>
           </div>
         </div>
@@ -69,7 +87,8 @@ import axios from "axios";
 export default {
   data() {
     return {
-      toggle: false,
+      toggleOffer: false,
+      toggleLong: false,
       sort: "alphabetical",
       displayGroup: "all",
       displayBrand: "all",
@@ -83,6 +102,7 @@ export default {
   },
   methods: {
     selectGroup(group) {
+      console.log(group);
       this.displayGroup = group;
     },
     selectBrand(brand) {
@@ -91,12 +111,12 @@ export default {
     deselect() {
       this.displayBrand = "all";
       this.displayGroup = "all";
-      this.toggle = false;
+      this.toggleOffer = false;
     },
   },
   computed: {
     productFilter() {
-      if (this.toggle) {
+      if (this.toggleOffer) {
         const hasProductOffers = (item) => {
           return item.ProductOffers.length !== 0;
         };
@@ -214,7 +234,7 @@ export default {
       brandGroup(state) {
         let brands = {};
         for (const product of state.products) {
-          if (!brands[product.Brand]) {
+          if (!brands[product.Brand] && product.Brand !== null) {
             brands[product.Brand] = 1;
           } else if (brands[product.Brand]) {
             brands[product.Brand]++;
@@ -258,48 +278,75 @@ export default {
 .sort-wrapper {
   display: flex;
   width: 100%;
-  padding: 10px 50px 0 0;
+  padding: 10px 36px 0 0;
   justify-content: flex-end;
 }
-
+.selected {
+  font-weight: 700;
+}
 #sort {
   height: 30px;
-  width: 140px;
+  width: 160px;
+  /* border: var(--colors-border); */
 }
 .offer-toggle {
   padding: 20px 0 20px 20px;
-  border-top: 1px solid rgb(73, 73, 73);
 }
-.aside {
-  padding: 50px 30px 0 30px;
+aside {
+  padding-top: 100px;
+  /* padding: 100px 30px 0 30px; */
   display: flex;
   flex-direction: column;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
   row-gap: 30px;
-  width: 30%;
+  width: 24%;
   line-height: 1.5;
 }
-.aside h3 {
+aside h3 {
   padding-left: 10px;
+  /* border-bottom: var(--colors-border); */
 }
-.aside ul {
+aside ul {
   padding: 20px 0 20px 20px;
-  border-top: 1px solid rgb(73, 73, 73);
 }
-.aside ul li {
+aside ul li {
   list-style: none;
 }
 .deselect {
   display: flex;
   align-items: center;
-  /* margin-bottom: -20px; */
+  justify-content: space-between;
+  /* border-bottom: var(--colors-border); */
+  width: 100%;
+  height: 30px;
+  min-height: 100%;
 }
 .deselectTitle {
   padding-right: 14px;
+  padding-bottom: 20px;
+  /* height: 100%; */
 }
 .deselectButton {
-  margin-top: -5px;
+  width: 30px;
+  height: 30px;
+}
+.option {
+  height: 30px;
+  width: 160px;
+  background-color: white;
+}
+#toggleOffer {
+  margin-left: 30px;
+}
+.offers h3 {
+  margin-bottom: 20px;
+}
+.soorten h3,
+.offers h3,
+.merken h3,
+.deselect {
+  border-bottom: var(--colors-border);
 }
 @media only screen and (min-width: 800px) {
   /* .product-container {
@@ -339,22 +386,23 @@ export default {
     border-top: 1px solid rgb(73, 73, 73);
   }
   .aside {
-    padding: 50px 30px 0 30px;
+    padding: 50px 10px 0 30px;
     display: flex;
     flex-direction: column;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 18px;
     row-gap: 30px;
-    width: 30%;
+    width: 300px;
+    background-color: tomato;
     line-height: 1.5;
   }
   .aside h3 {
     padding: 30px 0 10px 10px;
   }
-  .aside ul {
-    padding: 20px 0 20px 20px;
+  /* .aside ul {
+    padding: 20px 0 0 20px;
     border-top: 1px solid rgb(73, 73, 73);
-  }
+  } */
   .aside ul li {
     list-style: none;
   }

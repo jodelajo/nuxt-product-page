@@ -63,9 +63,9 @@ export default {
   justify-content: space-between;
   padding: 0 1rem 1rem 1rem;
   background-color: white;
-  border: 1px solid rgba(128, 128, 128, 0.2);
+  border: var(--colors-border);
   column-count: 3;
-  box-shadow: 2px 2px 3px rgba(161, 161, 161, 0.1);
+  /* box-shadow: 2px 2px 3px rgba(161, 161, 161, 0.1); */
 }
 
 .productCard h2 {
