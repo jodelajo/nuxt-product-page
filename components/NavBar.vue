@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { mapGetters} from "vuex";
+import { mapGetters } from "vuex";
 export default {
   computed: {
     ...mapGetters(["totalProductsCount"]),
@@ -22,20 +22,22 @@ export default {
 
 <style scoped>
 .navBar {
-  position: sticky;
+  position: fixed;
   top: 0;
   width: 100vw;
-  background-color: rgb(56, 56, 56);
-  color: white;
+  background-color: white;
+  border-bottom: 1px solid gray;
+  color: black;
   height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 8;
 }
 .shoppingcart {
-  width: 1200px;
-  padding: 0 50px;
   display: flex;
+  width: 100%;
+  padding: 0 20px;
   justify-content: space-between;
   align-items: center;
 }
@@ -50,7 +52,7 @@ export default {
 }
 
 .shoppingcart a {
-  color: white;
+  color: black;
   text-decoration: none;
 }
 .basket {
@@ -59,7 +61,8 @@ export default {
 .counter {
   position: absolute;
   text-align: center;
-  padding-top: 3px;
+  padding-left: 2px;
+  color: white;
   bottom: 16px;
   left: 30px;
   width: 24px;
@@ -67,5 +70,13 @@ export default {
   border-radius: 50%;
   background-color: red;
   z-index: 10;
+}
+@media only screen and (min-width: 500px) {
+}
+@media only screen and (min-width: 1200px) {
+  .shoppingcart {
+    width: 1200px;
+    padding: 0 50px;
+  }
 }
 </style>

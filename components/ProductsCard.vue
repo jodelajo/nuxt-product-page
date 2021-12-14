@@ -6,6 +6,7 @@
           <h2>{{ product.MainDescription }}</h2>
         </header>
         <h3>{{ product.Brand }}</h3>
+
         <section class="productWrapper">
           <ProductPictures
             v-for="pictures in product.ProductPictures"
@@ -15,16 +16,19 @@
           />
           <div class="price">
             <ProductPrices
-              v-for="prices in product.ProductPrices.slice(0, 1)"
-              :key="prices.ProductID + '-price'"
-              :prices="prices"
+              :prices="product.ProductPrices[0]"
+              :offer="product.ProductOffers[0]"
             />
           </div>
         </section>
       </NuxtLink>
 
       <div class="buttons">
-        <IncDecButtons :product="product" :quantity="quantity" :shoppingcart="shoppingcart" />
+        <IncDecButtons
+          :product="product"
+          :quantity="quantity"
+          :shoppingcart="shoppingcart"
+        />
       </div>
     </article>
   </div>
@@ -59,12 +63,12 @@ export default {
   justify-content: space-between;
   padding: 0 1rem 1rem 1rem;
   background-color: white;
+  border: var(--colors-border);
   column-count: 3;
-  box-shadow: 2px 2px 3px rgba(161, 161, 161, 0.1);
 }
 
 .productCard h2 {
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   margin-top: 5px;
 }
 
@@ -79,6 +83,7 @@ a {
   text-decoration: none;
 }
 .productCard h3 {
+  font-size: 0.9rem;
   color: grey;
 }
 
@@ -102,8 +107,6 @@ a {
 
 @media only screen and (min-width: 700px) {
   .productCard {
-    width: 260px;
-    min-height: 400px;
     padding: 0 3rem 1rem 3rem;
   }
 
@@ -114,6 +117,13 @@ a {
   }
   .ingredients {
     display: none;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .productCard {
+    width: 260px;
+    height: 400px;
+    padding: 0 3rem 1rem 3rem;
   }
 }
 </style>

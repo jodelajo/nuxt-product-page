@@ -14,17 +14,13 @@
         />
         <div class="price">
           <ProductPrices
-            v-for="prices in product.ProductPrices.slice(0, 1)"
-            :key="prices.ProductID + '-price'"
-            :prices="prices"
+            :prices="product.ProductPrices[0]"
+            :offer="product.ProductOffers[0]"
           />
         </div>
       </section>
       <div class="buttons">
-        <IncDecButtons
-          :product="product"
-          :quantity="quantity"
-        />
+        <IncDecButtons :product="product" :quantity="quantity" />
       </div>
     </article>
   </div>
@@ -35,7 +31,7 @@
 import { mapState } from "vuex";
 export default {
   props: ["products"],
-   computed: {
+  computed: {
     ...mapState({
       quantity: function (state) {
         return (
@@ -45,11 +41,10 @@ export default {
         );
       },
     }),
-     product() {
+    product() {
       return this.$store.getters.getProductById(this.$route.params.id);
     },
   },
-  
 };
 </script>
 

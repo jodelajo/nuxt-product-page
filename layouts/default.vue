@@ -1,29 +1,28 @@
 <template>
   <div>
-   <NavBar />
+    <NavBar />
     <Nuxt />
   </div>
 </template>
 
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;500;700;900&family=Readex+Pro:wght@300;500;700&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;500&display=swap");
+:root {
+  --colors-border: 1px solid rgba(138, 138, 138, 0.4);
+}
 body {
   box-sizing: border-box;
   margin: 0;
-  background-color: rgba(223, 215, 217, 0.1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-   font-family: "Montserrat", sans-serif;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
 }
-
 
 *,
 *::before,
 *::after {
   box-sizing: border-box;
   margin: 0;
+  /* border: 1px solid red; */
 }
 h2 {
   font-weight: 300;
