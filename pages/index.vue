@@ -330,6 +330,7 @@ export default {
   height: 40px;
   width: 100%;
 }
+
 #sort {
   width: 100%;
   height: 50px;
@@ -587,8 +588,7 @@ aside ul li {
     gap: 20px;
     /* justify-content: center; */
     align-items: flex-start;
-    width: 100%;
-    margin-left: 100px;
+    /* width: 100%; */
   }
   .sidebar {
     position: fixed;
