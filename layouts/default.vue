@@ -14,7 +14,6 @@ body {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  /* background-color: rgba(182, 182, 182, 0.08); */
   font-family: "Poppins", sans-serif;
 }
 

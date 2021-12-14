@@ -62,7 +62,6 @@ export default {
   position: absolute;
   text-align: center;
   padding-left: 2px;
-  /* padding-top: 3px; */
   color: white;
   bottom: 16px;
   left: 30px;

@@ -65,7 +65,6 @@ export default {
   background-color: white;
   border: var(--colors-border);
   column-count: 3;
-  /* box-shadow: 2px 2px 3px rgba(161, 161, 161, 0.1); */
 }
 
 .productCard h2 {

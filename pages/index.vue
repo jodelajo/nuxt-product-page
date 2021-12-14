@@ -341,7 +341,6 @@ export default {
   width: 100%;
   height: 50px;
   text-align: center;
-  /* color: white; */
   background-color: white;
   border: none;
   border-radius: 0;
@@ -355,28 +354,22 @@ export default {
   width: 100%;
   justify-content: space-between;
   height: 50px;
-
-  /* border-bottom: 1px solig hotpink; */
   position: fixed;
   top: 60px;
 }
 
 .filter {
   display: block;
-  /* width: 50%; */
   height: 50px;
   padding-left: 20px;
   text-align: start;
   background-color: white;
-  /* color: white; */
   border: none;
-  /* border-radius: 3px; */
 }
 .selected {
   display: flex;
   justify-content: space-between;
   font-weight: 700;
-  /* width: 270px; */
 }
 .result {
   position: absolute;
@@ -384,8 +377,6 @@ export default {
   display: flex;
   width: 100vw;
   height: 70px;
-  /* border-radius: 24px; */
-  /* margin: 0p 5vw 40px 5vw; */
   border: none;
   justify-content: center;
   align-items: center;
@@ -405,12 +396,10 @@ export default {
   flex-direction: column;
   align-items: center;
   min-height: calc(100vh - 60px);
-
   padding: 0px 20px 40px 20px;
   background-color: white;
   z-index: 1;
   left: 0;
-  /* overflow: hidden; */
 }
 .scroller {
   height: 100%;
@@ -441,12 +430,7 @@ aside {
   row-gap: 30px;
   width: 100%;
   margin-top: 40px;
-  /* height: 667px; */
   line-height: 1.5;
-}
-aside h3 {
-  /* padding-left: 10px; */
-  /* border-bottom: var(--colors-border); */
 }
 aside ul {
   padding: 0px 0 0px 20px;
@@ -458,15 +442,9 @@ aside ul li {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* border-bottom: var(--colors-border); */
-  /* width: 100%; */
-  /* height: 30px; */
-  /* min-height: 100%; */
 }
 .deselectTitle {
   padding-right: 14px;
-  /* padding-bottom: 20px; */
-  /* height: 100%; */
 }
 
 .option {
@@ -487,7 +465,6 @@ aside ul li {
 .merken,
 .deselect {
   border-bottom: var(--colors-border);
-  /* width: 250px; */
   padding-bottom: 20px;
   margin-bottom: 20px;
 }
@@ -504,17 +481,14 @@ aside ul li {
   }
   .sort-wrapper {
     display: flex;
-    /* align-items: flex-end; */
     justify-content: flex-end;
     padding-bottom: 60px;
-
     width: 100%;
   }
   .buttonSort {
     display: flex;
     background-color: white;
     width: 100%;
-    /* align-items: flex-end; */
     justify-content: flex-end;
     position: relative;
     top: 0;
@@ -529,7 +503,6 @@ aside ul li {
     border-bottom: 1px solid lightgray;
     border-right: 1px solid lightgray;
     width: 200px;
-    /* margin-top: 10px; */
   }
   .sort {
     margin-right: 20px;
@@ -541,13 +514,6 @@ aside ul li {
   .filter {
     display: none;
   }
-  .selected {
-    /* width: 280px; */
-  }
-  /* 
-  position: fixed;
-    left: auto;
-    top: 100px; */
   .sidebar {
     position: fixed;
     display: flex;
@@ -563,29 +529,14 @@ aside ul li {
     display: none;
   }
   .aside {
-    /* padding-top: 100px; */
-    /* padding: 100px 30px 0 30px; */
     display: flex;
     flex-direction: column;
     row-gap: 30px;
-    /* width: 240px; */
     line-height: 1.5;
   }
   .aside ul {
     padding: 20px 0 20px 20px;
   }
-  .soorten,
-  .offers,
-  .merken,
-  .deselect {
-    /* width: 240px; */
-  }
-  /* .soorten h3,
-  .offers h3,
-  .merken h3,
-  .deselect {
-    width: 200px;
-  } */
 }
 @media only screen and (min-width: 1200px) {
   .main-container {
@@ -599,9 +550,7 @@ aside ul li {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    /* justify-content: center; */
     align-items: flex-start;
-    /* width: 100%; */
   }
   .sidebar {
     position: fixed;
@@ -611,7 +560,6 @@ aside ul li {
     width: 260px;
 
     font-size: 1rem;
-    /* margin-left: 100px; */
   }
   .offer-toggle {
     padding: 20px 0 20px 20px;

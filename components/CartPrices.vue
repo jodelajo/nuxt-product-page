@@ -1,13 +1,11 @@
 <template>
   <div>
-    <!-- <p class="price">€ {{ quantity * nicePrice }}</p> -->
-
     <p class="price">
       €
       <span v-bind:class="{ strike: offer }">
-        {{ quantity * prices.Price }}</span
+        {{ (quantity * prices.Price).toFixed(2) }}</span
       >
-      <span v-if="offer"> {{ quantity * offer.OfferPrice }}</span>
+      <span v-if="offer"> {{ (quantity * offer.OfferPrice).toFixed(2) }}</span>
     </p>
   </div>
 </template>
@@ -23,11 +21,6 @@ export default {
     },
     offer: {
       OfferPrice: Number,
-    },
-  },
-  computed: {
-    nicePrice() {
-      return this.prices.Price.toFixed(2);
     },
   },
 };

@@ -11,7 +11,6 @@ export const getters = {
   totalPrice: (state) => {
     let total = 0;
     for (const product of state.shoppingcart) {
-      // todo: check if offer
       if (product.ProductOffers.length > 0) {
         total = total + product.quantity * product.ProductOffers[0].OfferPrice;
       } else {

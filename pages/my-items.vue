@@ -31,7 +31,6 @@ export default {
   justify-content: center;
   align-items: center;
   padding-top: 20px;
-  /* padding: 5rem; */
 }
 .item {
   display: flex;
@@ -54,10 +53,6 @@ button {
 .order {
   display: flex;
   flex-direction: column;
-  /* min-width: 200px; */
-  /* justify-self: flex-end; */
-  /* align-self: flex-end; */
-  /* margin-right: 40px; */
 }
 
 @media only screen and (min-width: 400px) {

@@ -66,14 +66,12 @@ export default {
   padding: 20px;
   width: 340px;
   max-width: 500px;
-  /* height: 100px; */
   background-color: white;
   border: var(--colors-border);
 }
 .left,
 .right {
   width: 100%;
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -135,11 +133,7 @@ export default {
   .right {
     width: 50%;
     flex-direction: row;
-    /* flex-wrap: nowrap; */
     padding-bottom: 20px;
   }
-  /* .price {
-    width: 200px;
-  } */
 }
 </style>
