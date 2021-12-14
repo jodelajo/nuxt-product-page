@@ -2,7 +2,7 @@
   <div class="main-container">
     <h1>Alle producten</h1>
     <div class="main-wrapper">
-      <aside :class="!showFilter ? 'sidebar' : 'mobileSidebar'">
+      <aside :class="!showFilter ? 'sidebar' : 'sidebar mobileSidebar'">
         <div class="scroller">
           <div class="deselect">
             <div class="deselectTitle">
@@ -98,7 +98,7 @@
       <main class="product-container">
         <div class="buttonSort">
           <button class="filter" v-on:click="showFilter = !showFilter">
-            filter producten
+            Filter producten
           </button>
           <div class="sort-wrapper">
             <div class="sort">
