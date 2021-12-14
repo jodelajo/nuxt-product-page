@@ -563,9 +563,6 @@ aside ul li {
     position: fixed;
     left: auto;
     top: 100px;
-    min-width: 260px;
-    width: 260px;
-
     font-size: 1rem;
   }
   .offer-toggle {

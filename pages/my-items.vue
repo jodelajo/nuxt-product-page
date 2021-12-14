@@ -30,7 +30,7 @@ export default {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  padding-top: 20px;
+  padding-top: 80px;
 }
 .item {
   display: flex;
