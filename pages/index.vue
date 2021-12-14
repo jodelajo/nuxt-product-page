@@ -7,9 +7,7 @@
             <div class="deselectTitle">
               <h3>Reset filters</h3>
             </div>
-            <div class="deselectButton">
-              <button v-on:click="deselect()">x</button>
-            </div>
+            <button class="deselectButton" v-on:click="deselect()">x</button>
           </div>
 
           <div class="soorten">
@@ -29,6 +27,7 @@
                 >
 
                 <button
+                  class="deselectButton"
                   v-if="group === displayGroup"
                   v-on:click="selectGroup('all')"
                 >
@@ -72,6 +71,7 @@
                   <span v-on:click="selectBrand(brand)"> {{ brand }}</span>
                   <span class="subgroup"> ({{ brandGroup[brand] }})</span>
                   <button
+                    class="deselectButton"
                     v-if="brand === displayBrand"
                     v-on:click="selectBrand('all')"
                   >
@@ -453,7 +453,15 @@ aside ul li {
 .deselectTitle {
   padding-right: 14px;
 }
+.deselectButton {
+  background-color: white;
+  border: 1px solid lightgray;
+  margin-right: 6px;
+}
 
+.deselectButton:hover {
+  transform: scale(1.1);
+}
 .option {
   height: 30px;
   width: 160px;

@@ -121,8 +121,8 @@ a {
 }
 @media only screen and (min-width: 992px) {
   .productCard {
-    width: 260px;
-    height: 400px;
+    max-width: 260px;
+    /* height: 400px; */
     padding: 0 3rem 1rem 3rem;
   }
 }
