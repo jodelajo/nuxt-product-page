@@ -328,20 +328,23 @@ export default {
   margin-top: 70px;
 }
 .sort-wrapper {
-  display: flex;
   width: 50%;
 }
 .sort {
-  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
   width: 100%;
-  padding-right: 20px;
+  border-bottom: 1px solid hotpink;
+  border-left: 0.5px solid hotpink;
 }
 
 #sort {
   width: 100%;
-  height: 50px;
   text-align: center;
   background-color: white;
+  padding-right: 20px;
   border: none;
   border-radius: 0;
 }
@@ -351,6 +354,7 @@ export default {
 
 .buttonSort {
   display: flex;
+  background-color: white;
   width: 100%;
   justify-content: space-between;
   height: 50px;
@@ -361,10 +365,13 @@ export default {
 .filter {
   display: block;
   height: 50px;
+  width: 50%;
   padding-left: 20px;
   text-align: start;
   background-color: white;
   border: none;
+  border-bottom: 1px solid hotpink;
+  border-right: 0.5px solid hotpink;
 }
 .selected {
   display: flex;
