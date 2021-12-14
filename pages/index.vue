@@ -23,16 +23,17 @@
                 :key="group"
                 v-bind:class="{ selected: group === displayGroup }"
               >
-                <span>
-                  <span v-on:click="selectGroup(group)">{{ group }}</span>
-                  <span class="subgroup">({{ subGroups[group] }})</span>
-                  <button
-                    v-if="group === displayGroup"
-                    v-on:click="selectGroup('all')"
-                  >
-                    x
-                  </button>
-                </span>
+                <span v-on:click="selectGroup(group)"
+                  >{{ group
+                  }}<span class="subgroup">({{ subGroups[group] }})</span></span
+                >
+
+                <button
+                  v-if="group === displayGroup"
+                  v-on:click="selectGroup('all')"
+                >
+                  x
+                </button>
               </li>
             </ul>
             <ul>
@@ -366,7 +367,7 @@ export default {
   display: flex;
   justify-content: space-between;
   font-weight: 700;
-  width: 270px;
+  /* width: 270px; */
 }
 .result {
   position: absolute;
@@ -390,7 +391,7 @@ export default {
 }
 .mobileSidebar {
   position: fixed;
-  width: 100vw;
+  width: calc(100vw - 20px);
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -398,7 +399,7 @@ export default {
   min-height: 84%;
   height: 84%;
   max-height: 84%;
-  padding: 0px 0 40px 0;
+  padding: 0px 20px 40px 20px;
   background-color: white;
   z-index: 1;
   left: 0;
@@ -406,6 +407,7 @@ export default {
 }
 .scroller {
   height: 100%;
+  width: 100%;
   padding-top: 30px;
   overflow-x: hidden;
   z-index: 1;
@@ -449,19 +451,16 @@ aside ul li {
   align-items: center;
   justify-content: space-between;
   /* border-bottom: var(--colors-border); */
-  width: 100%;
-  height: 30px;
+  /* width: 100%; */
+  /* height: 30px; */
   /* min-height: 100%; */
 }
 .deselectTitle {
   padding-right: 14px;
-  padding-bottom: 20px;
+  /* padding-bottom: 20px; */
   /* height: 100%; */
 }
-.deselectButton {
-  width: 30px;
-  height: 30px;
-}
+
 .option {
   height: 30px;
   width: 160px;
@@ -478,13 +477,13 @@ aside ul li {
 .merken,
 .deselect {
   border-bottom: var(--colors-border);
-  width: 250px;
+  /* width: 250px; */
   padding-bottom: 20px;
   margin-bottom: 20px;
 }
 @media only screen and (min-width: 500px) {
   .product-section {
-    margin-left: 240px;
+    margin-left: 300px;
   }
 
   .main-container h1 {
@@ -529,7 +528,7 @@ aside ul li {
     display: none;
   }
   .selected {
-    width: 280px;
+    /* width: 280px; */
   }
   /* 
   position: fixed;
@@ -538,10 +537,11 @@ aside ul li {
   .sidebar {
     position: fixed;
     display: flex;
-    width: 240px;
+    width: 300px;
     height: 100vh;
     background-color: white;
     padding-left: 20px;
+    padding-right: 20px;
     left: auto;
     font-size: 0.8rem;
   }
@@ -564,7 +564,7 @@ aside ul li {
   .offers,
   .merken,
   .deselect {
-    width: 240px;
+    /* width: 240px; */
   }
   /* .soorten h3,
   .offers h3,
