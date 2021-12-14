@@ -1,6 +1,5 @@
 <template>
   <div class="main-container">
-    <h1>Alle producten</h1>
     <div class="main-wrapper">
       <aside :class="!showFilter ? 'sidebar' : 'sidebar mobileSidebar'">
         <div class="scroller">
@@ -95,7 +94,7 @@
         </button>
       </aside>
 
-      <main class="product-container">
+      <main class="product-section">
         <div class="buttonSort">
           <button class="filter" v-on:click="showFilter = !showFilter">
             Filter producten
@@ -111,7 +110,7 @@
             </div>
           </div>
         </div>
-
+        <h1>Alle producten</h1>
         <ProductsCardDisplay :products="products" />
       </main>
     </div>
@@ -351,7 +350,7 @@ export default {
   background-color: hotpink;
   /* border-bottom: 1px solig hotpink; */
   position: fixed;
-  margin-top: -98px;
+  /* margin-top: -98px; */
 }
 
 .filter {
@@ -401,14 +400,12 @@ export default {
   max-height: 84%;
   padding: 0px 0 40px 0;
   background-color: white;
-  margin-top: -98px;
   z-index: 1;
   left: 0;
   /* overflow: hidden; */
 }
 .scroller {
   height: 100%;
-  width: 100%;
   padding-top: 30px;
   overflow-x: hidden;
   z-index: 1;
@@ -486,8 +483,8 @@ aside ul li {
   margin-bottom: 20px;
 }
 @media only screen and (min-width: 500px) {
-  .product-container {
-    margin-left: 100px;
+  .product-section {
+    margin-left: 240px;
   }
 
   .main-container h1 {
@@ -524,9 +521,7 @@ aside ul li {
     border-right: 1px solid lightgray;
     width: 200px;
   }
-  .scroller {
-    width: 240px;
-  }
+
   .option {
     width: 100%;
   }
@@ -546,6 +541,7 @@ aside ul li {
     width: 240px;
     height: 100vh;
     background-color: white;
+    padding-left: 20px;
     left: auto;
     font-size: 0.8rem;
   }
@@ -625,8 +621,5 @@ aside ul li {
   .aside ul li {
     list-style: none;
   }
-}
-.scroller {
-  width: 260px;
 }
 </style>
