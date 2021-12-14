@@ -99,6 +99,16 @@
         <div class="buttonSort">
           <button class="filter" v-on:click="showFilter = !showFilter">
             Filter producten
+            <span class="filterIcon"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="20"
+                height="20"
+              >
+                <path fill="none" d="M0 0h24v24H0z" />
+                <path d="M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z" /></svg
+            ></span>
           </button>
           <div class="sort-wrapper">
             <div class="sort">
@@ -363,15 +373,20 @@ export default {
 }
 
 .filter {
-  display: block;
+  display: flex;
   height: 50px;
   width: 50%;
-  padding-left: 20px;
-  text-align: start;
+  justify-content: flex-end;
+  align-items: center;
+  /* padding-left: 20px; */
+  /* text-align: start; */
   background-color: white;
   border: none;
   border-bottom: 1px solid hotpink;
   border-right: 0.5px solid hotpink;
+}
+.filterIcon {
+  margin-left: 40px;
 }
 .selected {
   display: flex;

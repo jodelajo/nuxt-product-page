@@ -4,9 +4,15 @@
       <NuxtLink to="/">home</NuxtLink>
       <NuxtLink to="/my-items">
         <span class="basket">
-          <Basket /> <span class="counter">{{ totalProductsCount }}</span></span
-        > </NuxtLink
-      ><span class="sr-only">(current)</span>
+          <Basket />
+          <transition name="bumpyBasket">
+            <span v-if="bounce" :key="totalProductsCount" class="counter">{{
+              totalProductsCount
+            }}</span>
+          </transition>
+        </span>
+      </NuxtLink>
+      <span class="sr-only">(current)</span>
     </div>
   </nav>
 </template>
@@ -14,6 +20,11 @@
 <script>
 import { mapGetters } from "vuex";
 export default {
+  data() {
+    return {
+      bounce: true,
+    };
+  },
   computed: {
     ...mapGetters(["totalProductsCount"]),
   },
@@ -26,7 +37,7 @@ export default {
   top: 0;
   width: 100vw;
   background-color: white;
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid lightgray;
   color: black;
   height: 60px;
   display: flex;
@@ -58,10 +69,29 @@ export default {
 .basket {
   position: relative;
 }
+
+.bumpyBasket-enter-active {
+  animation: bumpyBasket-fun 0.5s;
+}
+.bumpyBasket-leave-active {
+  animation: bumpyBasket-fun 0.5s;
+}
+
+@keyframes bumpyBasket-fun {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 .counter {
   position: absolute;
   text-align: center;
-  padding-left: 2px;
+
   color: white;
   bottom: 16px;
   left: 30px;
@@ -77,6 +107,9 @@ export default {
   .shoppingcart {
     width: 1200px;
     padding: 0 50px;
+  }
+  .counter {
+    padding-left: 1px;
   }
 }
 </style>
