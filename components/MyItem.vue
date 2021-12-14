@@ -8,9 +8,8 @@
         <div class="price">
           <h5>prijs per stuk</h5>
           <ProductPrices
-            v-for="prices in item.ProductPrices.slice(0, 1)"
-            :key="prices.ProductID + '-price'"
-            :prices="prices"
+            :prices="item.ProductPrices[0]"
+            :offer="item.ProductOffers[0]"
           />
         </div>
       </div>
@@ -22,10 +21,9 @@
         <div class="totalPrice">
           <h5>totaalprijs</h5>
           <CartPrices
-            v-for="prices in item.ProductPrices.slice(0, 1)"
-            :key="prices.ProductID"
-            :prices="prices"
             :quantity="item.quantity"
+            :prices="item.ProductPrices[0]"
+            :offer="item.ProductOffers[0]"
           />
         </div>
         <button
@@ -44,13 +42,12 @@
 </template>
 
 <script>
-import { mapMutations, mapGetters } from "vuex";
+import { mapMutations } from "vuex";
 export default {
   props: ["item", "quantity"],
 
   methods: {
     ...mapMutations(["deleteProduct"]),
-    // ...mapGetters(["priceTwoDecimal"])
   },
 };
 </script>
@@ -67,7 +64,7 @@ export default {
   border-radius: 4px;
   flex-wrap: wrap;
   padding: 20px;
-  min-width: 300px;
+  width: 340px;
   max-width: 500px;
   /* height: 100px; */
   background-color: white;
@@ -106,14 +103,14 @@ export default {
 }
 @media only screen and (min-width: 700px) {
   .productWrapper {
-    width: 600px;
+    width: 700px;
     max-width: 900px;
   }
   .title {
-    width: 200px;
+    width: 180px;
   }
   .price {
-    width: 120px;
+    width: 300px;
     display: flex;
     align-items: center;
     column-gap: 10px;
@@ -131,6 +128,7 @@ export default {
 @media only screen and (min-width: 1200px) {
   .productWrapper {
     width: 1200px;
+    max-width: 1200px;
     flex-direction: row;
   }
   .left,
@@ -140,8 +138,8 @@ export default {
     /* flex-wrap: nowrap; */
     padding-bottom: 20px;
   }
-  .price {
+  /* .price {
     width: 200px;
-  }
+  } */
 }
 </style>

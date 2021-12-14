@@ -6,6 +6,7 @@
           <h2>{{ product.MainDescription }}</h2>
         </header>
         <h3>{{ product.Brand }}</h3>
+
         <section class="productWrapper">
           <ProductPictures
             v-for="pictures in product.ProductPictures"
@@ -15,9 +16,8 @@
           />
           <div class="price">
             <ProductPrices
-              v-for="prices in product.ProductPrices.slice(0, 1)"
-              :key="prices.ProductID + '-price'"
-              :prices="prices"
+              :prices="product.ProductPrices[0]"
+              :offer="product.ProductOffers[0]"
             />
           </div>
         </section>
@@ -108,8 +108,8 @@ a {
 
 @media only screen and (min-width: 700px) {
   .productCard {
-    width: 260px;
-    height: 400px;
+    width: 240px;
+    height: 380px;
     padding: 0 3rem 1rem 3rem;
   }
 
@@ -120,6 +120,13 @@ a {
   }
   .ingredients {
     display: none;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .productCard {
+    width: 260px;
+    height: 400px;
+    padding: 0 3rem 1rem 3rem;
   }
 }
 </style>

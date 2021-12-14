@@ -6,7 +6,7 @@
 </template>
 
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;500;700;900&family=Readex+Pro:wght@300;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;500&display=swap");
 :root {
   --colors-border: 1px solid rgba(138, 138, 138, 0.4);
 }
@@ -14,8 +14,8 @@ body {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  background-color: rgba(182, 182, 182, 0.164);
-  font-family: "Montserrat", sans-serif;
+  /* background-color: rgba(182, 182, 182, 0.08); */
+  font-family: "Poppins", sans-serif;
 }
 
 *,
@@ -23,6 +23,7 @@ body {
 *::after {
   box-sizing: border-box;
   margin: 0;
+  /* border: 1px solid red; */
 }
 h2 {
   font-weight: 300;

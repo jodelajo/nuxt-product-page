@@ -2,78 +2,116 @@
   <div class="main-container">
     <h1>Alle producten</h1>
     <div class="main-wrapper">
-      <aside>
-        <div class="deselect">
-          <div class="deselectTitle">
-            <h3>Reset filters</h3>
+      <aside :class="!showFilter ? 'sidebar' : 'mobileSidebar'">
+        <div class="scroller">
+          <div class="deselect">
+            <div class="deselectTitle">
+              <h3>Reset filters</h3>
+            </div>
+            <div class="deselectButton">
+              <button v-on:click="deselect()">x</button>
+            </div>
           </div>
-          <div class="deselectButton">
-            <button v-on:click="deselect()">x</button>
+
+          <div class="soorten">
+            <h3>SOORTEN</h3>
+            <ul>
+              <li
+                v-for="group in Object.keys(subGroups).slice(
+                  0,
+                  toggleLongSort ? undefined : 3
+                )"
+                :key="group"
+                v-bind:class="{ selected: group === displayGroup }"
+              >
+                <span>
+                  <span v-on:click="selectGroup(group)">{{ group }}</span>
+                  <span class="subgroup">({{ subGroups[group] }})</span>
+                  <button
+                    v-if="group === displayGroup"
+                    v-on:click="selectGroup('all')"
+                  >
+                    x
+                  </button>
+                </span>
+              </li>
+            </ul>
+            <ul>
+              <button
+                class="showMore"
+                v-on:click="toggleLongSort = !toggleLongSort"
+              >
+                {{ toggleLongSort ? "Toon minder" : "Toon meer" }}
+              </button>
+            </ul>
+          </div>
+          <div class="offers">
+            <h3>AANBIEDINGEN</h3>
+            <div>
+              <input
+                v-model="toggleOffer"
+                type="checkbox"
+                id="toggleOffer"
+                name="toggleOffer"
+              />
+              <label for="toggleOffer">alleen aanbiedingen</label>
+            </div>
+          </div>
+          <div class="merken">
+            <h3>MERKEN</h3>
+            <ul>
+              <li
+                v-for="brand in Object.keys(brandGroup).slice(
+                  0,
+                  toggleLongBrand ? undefined : 3
+                )"
+                :key="brand"
+                v-bind:class="{ selected: brand === displayBrand }"
+              >
+                <span>
+                  <span v-on:click="selectBrand(brand)"> {{ brand }}</span>
+                  <span class="subgroup"> ({{ brandGroup[brand] }})</span>
+                  <button
+                    v-if="brand === displayBrand"
+                    v-on:click="selectBrand('all')"
+                  >
+                    x
+                  </button>
+                </span>
+              </li>
+            </ul>
+            <ul>
+              <button
+                class="showMore"
+                v-on:click="toggleLongBrand = !toggleLongBrand"
+              >
+                {{ toggleLongBrand ? "Toon minder" : "Toon meer" }}
+              </button>
+            </ul>
+          </div>
+        </div>
+        <button class="result" v-on:click="showFilter = !showFilter">
+          Toon producten ({{ products.length }})
+        </button>
+      </aside>
+
+      <main class="product-container">
+        <div class="buttonSort">
+          <button class="filter" v-on:click="showFilter = !showFilter">
+            filter producten
+          </button>
+          <div class="sort-wrapper">
+            <div class="sort">
+              <select v-model="sort" name="sort" id="sort">
+                <option class="option" value="alphabetical">Sorteer op</option>
+                <option class="option" value="alphabetical">A-Z</option>
+                <option class="option" value="priceASC">Prijs oplopend</option>
+                <option class="option" value="priceDESC">Prijs aflopend</option>
+              </select>
+            </div>
           </div>
         </div>
 
-        <div class="soorten">
-          <h3>SOORTEN</h3>
-          <ul v-if="!toggleLong">
-            <li
-              v-for="group in Object.keys(subGroups).slice(0, 3)"
-              :key="group"
-              v-bind:class="{ selected: group === displayGroup }"
-            >
-              <span v-on:click="selectGroup(group)">{{ group }}</span>
-              <span class="subgroup">({{ subGroups[group] }})</span>
-              <button
-                v-if="group === displayGroup"
-                v-on:click="selectGroup('all')"
-              >
-                x
-              </button>
-            </li>
-          </ul>
-          <ul>
-            <a href="">Toon meer</a>
-          </ul>
-        </div>
-        <div class="offers">
-          <h3>AANBIEDINGEN</h3>
-          <div>
-            <input
-              v-model="toggleOffer"
-              type="checkbox"
-              id="toggleOffer"
-              name="toggleOffer"
-            />
-            <label for="toggleOffer">alleen aanbiedingen</label>
-          </div>
-        </div>
-        <div class="merken">
-          <h3>MERKEN</h3>
-          <ul>
-            <li
-              v-for="brand in Object.keys(brandGroup).slice(0, 10)"
-              :key="brand"
-              v-on:click="selectBrand(brand)"
-            >
-              {{ brand }}
-              <span class="subgroup"> ({{ brandGroup[brand] }})</span>
-            </li>
-          </ul>
-          <ul>
-            <a href="">Toon meer</a>
-          </ul>
-        </div>
-      </aside>
-      <main class="product-container">
-        <div class="sort-wrapper">
-          <div class="sort">
-            <select v-model="sort" name="sort" id="sort">
-              <option class="option" value="alphabetical">Sorteer op</option>
-              <option class="option" value="alphabetical">A-Z</option>
-              <option class="option" value="priceASC">Prijs oplopend</option>
-              <option class="option" value="priceDESC">Prijs aflopend</option>
-            </select>
-          </div>
-        </div>
         <ProductsCardDisplay :products="products" />
       </main>
     </div>
@@ -87,8 +125,10 @@ import axios from "axios";
 export default {
   data() {
     return {
+      showFilter: false,
       toggleOffer: false,
-      toggleLong: false,
+      toggleLongSort: false,
+      toggleLongBrand: false,
       sort: "alphabetical",
       displayGroup: "all",
       displayBrand: "all",
@@ -253,10 +293,14 @@ export default {
 <style>
 .main-container {
   margin: 0 auto;
-  padding-top: 30px;
+  padding-top: 0px;
   background-color: white;
+  width: 100vw;
+  height: 100vh;
+  min-height: 100%;
 }
 .main-container h1 {
+  padding-top: 50px;
   text-align: center;
 }
 .subgroup {
@@ -265,42 +309,132 @@ export default {
 
 .main-wrapper {
   display: flex;
+  flex-direction: column;
   align-items: flex-start;
+  position: relative;
+  height: 100%;
 }
 .product-container {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  justify-content: flex-start;
+  justify-content: center;
   width: 100%;
   height: auto;
 }
 .sort-wrapper {
   display: flex;
-  width: 100%;
-  padding: 10px 36px 0 0;
-  justify-content: flex-end;
+  width: 50%;
 }
-.selected {
-  font-weight: 700;
+.sort {
+  height: 40px;
+  width: 100%;
 }
 #sort {
-  height: 30px;
-  width: 160px;
-  /* border: var(--colors-border); */
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  /* color: white; */
+  background-color: white;
+  border: none;
+  border-radius: 0;
+}
+.option {
+  width: 100%;
+}
+
+.buttonSort {
+  display: flex;
+  width: 100%;
+  height: 51px;
+  gap: 1px;
+  background-color: hotpink;
+  /* border-bottom: 1px solig hotpink; */
+  position: fixed;
+  margin-top: -98px;
+}
+
+.filter {
+  display: inline;
+  width: 50%;
+  height: 50px;
+  background-color: white;
+  /* color: white; */
+  border: none;
+  /* border-radius: 3px; */
+}
+.selected {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700;
+  width: 270px;
+}
+.result {
+  position: absolute;
+  bottom: -70px;
+  display: flex;
+  width: 100vw;
+  height: 70px;
+  /* border-radius: 24px; */
+  /* margin: 0p 5vw 40px 5vw; */
+  border: none;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: 700;
+  background-color: hotpink;
+  z-index: 2;
+}
+.sidebar {
+  position: absolute;
+  left: -1000px;
+}
+.mobileSidebar {
+  position: fixed;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  min-height: 84%;
+  height: 84%;
+  max-height: 84%;
+  padding: 0px 0 40px 0;
+  background-color: white;
+  margin-top: -98px;
+  z-index: 1;
+  left: 0;
+  /* overflow: hidden; */
+}
+.scroller {
+  height: 100%;
+  width: 100%;
+  padding-top: 30px;
+  overflow-x: hidden;
+  z-index: 1;
 }
 .offer-toggle {
   padding: 20px 0 20px 20px;
 }
+
+.showMore {
+  background-color: white;
+  margin: 0;
+  margin-top: 12px;
+  padding: 0;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-bottom: 1px solid blue;
+  color: blue;
+  font-size: 16px;
+}
 aside {
-  padding-top: 100px;
-  /* padding: 100px 30px 0 30px; */
-  display: flex;
-  flex-direction: column;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
   row-gap: 30px;
-  width: 24%;
+  width: 100%;
+  /* height: 667px; */
   line-height: 1.5;
 }
 aside h3 {
@@ -308,7 +442,7 @@ aside h3 {
   /* border-bottom: var(--colors-border); */
 }
 aside ul {
-  padding: 20px 0 20px 20px;
+  padding: 0px 0 0px 20px;
 }
 aside ul li {
   list-style: none;
@@ -320,7 +454,7 @@ aside ul li {
   /* border-bottom: var(--colors-border); */
   width: 100%;
   height: 30px;
-  min-height: 100%;
+  /* min-height: 100%; */
 }
 .deselectTitle {
   padding-right: 14px;
@@ -342,15 +476,105 @@ aside ul li {
 .offers h3 {
   margin-bottom: 20px;
 }
-.soorten h3,
-.offers h3,
-.merken h3,
+.soorten,
+.offers,
+.merken,
 .deselect {
   border-bottom: var(--colors-border);
+  width: 250px;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
 }
-@media only screen and (min-width: 800px) {
-  /* .product-container {
-    width: 800px;
+@media only screen and (min-width: 500px) {
+  .product-container {
+    margin-left: 100px;
+  }
+
+  .main-container h1 {
+    position: relative;
+  }
+  .main-wrapper {
+    flex-direction: row;
+  }
+  .sort-wrapper {
+    display: flex;
+    /* align-items: flex-end; */
+    justify-content: flex-end;
+    padding-bottom: 60px;
+
+    width: 100%;
+  }
+  .buttonSort {
+    display: flex;
+    background-color: white;
+    width: 100%;
+    /* align-items: flex-end; */
+    justify-content: flex-end;
+    position: relative;
+    top: 0;
+  }
+
+  #sort,
+  .sort {
+    position: fixed;
+    top: 60px;
+    height: 30px;
+    border-left: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+    border-right: 1px solid lightgray;
+    width: 200px;
+  }
+  .scroller {
+    width: 240px;
+  }
+  .option {
+    width: 100%;
+  }
+  .filter {
+    display: none;
+  }
+  .selected {
+    width: 280px;
+  }
+  /* 
+  position: fixed;
+    left: auto;
+    top: 100px; */
+  .sidebar {
+    position: fixed;
+    display: flex;
+    width: 240px;
+    height: 100vh;
+    background-color: white;
+    left: auto;
+    font-size: 0.8rem;
+  }
+  .result {
+    display: none;
+  }
+  .aside {
+    /* padding-top: 100px; */
+    /* padding: 100px 30px 0 30px; */
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+    /* width: 240px; */
+    line-height: 1.5;
+  }
+  .aside ul {
+    padding: 20px 0 20px 20px;
+  }
+  .soorten,
+  .offers,
+  .merken,
+  .deselect {
+    width: 240px;
+  }
+  /* .soorten h3,
+  .offers h3,
+  .merken h3,
+  .deselect {
+    width: 200px;
   } */
 }
 @media only screen and (min-width: 1200px) {
@@ -365,21 +589,20 @@ aside ul li {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: flex-start;
     width: 100%;
+    margin-left: 100px;
   }
-  .sort-wrapper {
-    display: flex;
-    height: 60px;
-    width: 100%;
-    padding: 10px 50px 0 0;
-    justify-content: flex-end;
-  }
+  .sidebar {
+    position: fixed;
+    left: auto;
+    top: 100px;
+    min-width: 260px;
+    width: 260px;
 
-  #sort {
-    height: 30px;
-    width: 140px;
+    font-size: 1rem;
+    /* margin-left: 100px; */
   }
   .offer-toggle {
     padding: 20px 0 20px 20px;
@@ -393,18 +616,17 @@ aside ul li {
     font-size: 18px;
     row-gap: 30px;
     width: 300px;
-    background-color: tomato;
     line-height: 1.5;
   }
   .aside h3 {
     padding: 30px 0 10px 10px;
   }
-  /* .aside ul {
-    padding: 20px 0 0 20px;
-    border-top: 1px solid rgb(73, 73, 73);
-  } */
+
   .aside ul li {
     list-style: none;
   }
+}
+.scroller {
+  width: 260px;
 }
 </style>

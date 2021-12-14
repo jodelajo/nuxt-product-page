@@ -2,17 +2,14 @@
   <div class="container">
     <div class="item">
       <MyItem v-for="item in shoppingcart" :key="item.ProductID" :item="item" />
-       </div>
-      <div class="order">
-        <h4>totaalbedrag</h4>
-        € {{ totalPrice }}
-        <NuxtLink to="/order">
-          <button
-          class="button"
-          >Bestellen</button>
-        </NuxtLink>
-      </div>
-   
+    </div>
+    <div class="order">
+      <h4>totaalbedrag</h4>
+      € {{ totalPrice }}
+      <NuxtLink to="/order">
+        <button class="button">Bestellen</button>
+      </NuxtLink>
+    </div>
   </div>
 </template>
 
@@ -28,17 +25,17 @@ export default {
 
 <style scoped>
 .container {
-  width: 90%;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
-justify-content: center;
+  justify-content: center;
   align-items: center;
   padding-top: 20px;
   /* padding: 5rem; */
 }
 .item {
-display: flex;
-flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 button {
   height: 25px;
@@ -47,7 +44,7 @@ button {
   border: none;
 }
 .button {
-color: white;
+  color: white;
   background-color: rgb(51, 221, 51);
   font-size: 16px;
   margin-top: 10px;
@@ -55,18 +52,16 @@ color: white;
   height: 35px;
 }
 .order {
-    display: flex;
-    flex-direction: column;
-    /* min-width: 200px; */
-    /* justify-self: flex-end; */
-    /* align-self: flex-end; */
-    /* margin-right: 40px; */
+  display: flex;
+  flex-direction: column;
+  /* min-width: 200px; */
+  /* justify-self: flex-end; */
+  /* align-self: flex-end; */
+  /* margin-right: 40px; */
 }
 
-
-@media only screen and (min-width: 700px) {
+@media only screen and (min-width: 400px) {
   .container {
-      width: 100%;
     flex-direction: column;
   }
 }

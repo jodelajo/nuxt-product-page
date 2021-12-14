@@ -1,7 +1,7 @@
 export const state = () => ({
   shoppingcart: [],
   products: [],
-  offerProducts: []
+  offerProducts: [],
 });
 
 export const getters = {
@@ -11,14 +11,19 @@ export const getters = {
   totalPrice: (state) => {
     let total = 0;
     for (const product of state.shoppingcart) {
-      total = total + product.quantity * product.ProductPrices[0].Price;
+      // todo: check if offer
+      if (product.ProductOffers.length > 0) {
+        total = total + product.quantity * product.ProductOffers[0].OfferPrice;
+      } else {
+        total = total + product.quantity * product.ProductPrices[0].Price;
+      }
     }
     return total.toFixed(2);
   },
   totalProductsCount: (state) => {
     let count = 0;
     for (const product of state.shoppingcart) {
-        count = count + product.quantity
+      count = count + product.quantity;
     }
     return count;
   },
@@ -43,12 +48,16 @@ export const mutations = {
     if (item.quantity > 1) {
       item.quantity = item.quantity - 1;
     } else {
-        state.shoppingcart = state.shoppingcart.filter((item) => item.ProductID !== id)
+      state.shoppingcart = state.shoppingcart.filter(
+        (item) => item.ProductID !== id
+      );
     }
   },
 
   deleteProduct(state, id) {
-    state.shoppingcart = state.shoppingcart.filter((item) => item.ProductID !== id)
+    state.shoppingcart = state.shoppingcart.filter(
+      (item) => item.ProductID !== id
+    );
   },
 };
 
