@@ -302,6 +302,7 @@ export default {
 .main-container h1 {
   padding-top: 50px;
   text-align: center;
+  margin-bottom: 10px;
 }
 .subgroup {
   color: gray;
@@ -322,6 +323,10 @@ export default {
   width: 100%;
   height: auto;
 }
+
+.product-section {
+  margin-top: 70px;
+}
 .sort-wrapper {
   display: flex;
   width: 50%;
@@ -329,6 +334,7 @@ export default {
 .sort {
   height: 40px;
   width: 100%;
+  padding-right: 20px;
 }
 
 #sort {
@@ -347,18 +353,20 @@ export default {
 .buttonSort {
   display: flex;
   width: 100%;
-  height: 51px;
-  gap: 1px;
-  background-color: hotpink;
+  justify-content: space-between;
+  height: 50px;
+
   /* border-bottom: 1px solig hotpink; */
   position: fixed;
-  /* margin-top: -98px; */
+  top: 60px;
 }
 
 .filter {
-  display: inline;
-  width: 50%;
+  display: block;
+  /* width: 50%; */
   height: 50px;
+  padding-left: 20px;
+  text-align: start;
   background-color: white;
   /* color: white; */
   border: none;
@@ -372,7 +380,7 @@ export default {
 }
 .result {
   position: absolute;
-  bottom: -70px;
+  bottom: 0px;
   display: flex;
   width: 100vw;
   height: 70px;
@@ -392,14 +400,12 @@ export default {
 }
 .mobileSidebar {
   position: fixed;
-  width: calc(100vw - 20px);
+  margin-top: 60px;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
   align-items: center;
-  min-height: 84%;
-  height: 84%;
-  max-height: 84%;
+  min-height: calc(100vh - 60px);
+
   padding: 0px 20px 40px 20px;
   background-color: white;
   z-index: 1;
@@ -434,11 +440,12 @@ aside {
   font-size: 16px;
   row-gap: 30px;
   width: 100%;
+  margin-top: 40px;
   /* height: 667px; */
   line-height: 1.5;
 }
 aside h3 {
-  padding-left: 10px;
+  /* padding-left: 10px; */
   /* border-bottom: var(--colors-border); */
 }
 aside ul {
@@ -470,8 +477,10 @@ aside ul li {
 #toggleOffer {
   margin-left: 30px;
 }
-.offers h3 {
-  margin-bottom: 20px;
+.offers h3,
+.soorten h3,
+.merken h3 {
+  margin-bottom: 10px;
 }
 .soorten,
 .offers,
@@ -514,12 +523,16 @@ aside ul li {
   #sort,
   .sort {
     position: fixed;
-    top: 60px;
+    top: 70px;
     height: 30px;
     border-left: 1px solid lightgray;
     border-bottom: 1px solid lightgray;
     border-right: 1px solid lightgray;
     width: 200px;
+    /* margin-top: 10px; */
+  }
+  .sort {
+    margin-right: 20px;
   }
 
   .option {
