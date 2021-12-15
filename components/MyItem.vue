@@ -74,7 +74,7 @@ export default {
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: flex-start;
 }
 
@@ -108,18 +108,26 @@ export default {
     width: 180px;
   }
   .price {
-    width: 300px;
+    width: 240px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     column-gap: 10px;
   }
   .left {
     flex-direction: row;
+    justify-content: space-between;
+    padding-right: 120px;
   }
   .totalPrice {
     display: flex;
+    justify-content: space-between;
+    width: 240px;
     align-items: center;
-    column-gap: 6px;
+    /* column-gap: 6px; */
+  }
+  .deleteButton {
+    width: 60px;
   }
 }
 
@@ -127,7 +135,11 @@ export default {
   .productWrapper {
     width: 1200px;
     max-width: 1200px;
+    padding: 20px 40px 0 40px;
     flex-direction: row;
+  }
+  .totalPrice {
+    width: 200px;
   }
   .left,
   .right {

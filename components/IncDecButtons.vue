@@ -54,7 +54,7 @@ button {
   width: 20px;
 }
 .minButton {
-  background-color: rgba(255, 174, 174, 0.3);
+  background-color: rgba(197, 197, 197, 0.3);
 }
 .minButtonRed {
   color: white;

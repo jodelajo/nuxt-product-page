@@ -1,7 +1,11 @@
 <template>
   <nav class="navBar">
     <div class="shoppingcart">
-      <NuxtLink to="/">home</NuxtLink>
+      <NuxtLink to="/">
+        <div class="homeIcon">
+          <HomeIcon />
+        </div>
+      </NuxtLink>
       <NuxtLink to="/my-items">
         <span class="basket">
           <Basket />
@@ -66,6 +70,10 @@ export default {
   color: black;
   text-decoration: none;
 }
+
+.homeIcon {
+  margin-top: 4px;
+}
 .basket {
   position: relative;
 }
@@ -107,9 +115,6 @@ export default {
   .shoppingcart {
     width: 1200px;
     padding: 0 50px;
-  }
-  .counter {
-    padding-left: 1px;
   }
 }
 </style>

@@ -17,16 +17,20 @@ export default {};
 <style scoped>
 .container {
   font-size: 1.4rem;
-  padding: 3rem;
+  padding: 2.6rem;
+
+  font-weight: 300;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 40px;
 }
 
 @media only screen and (min-width: 700px) {
   .container {
     font-size: 2rem;
     padding: 6rem;
+    margin-top: 0;
   }
 }
 @media only screen and (min-width: 1200px) {

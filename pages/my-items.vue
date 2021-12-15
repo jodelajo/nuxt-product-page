@@ -44,7 +44,7 @@ button {
 }
 .button {
   color: white;
-  background-color: rgb(51, 221, 51);
+  background-color: hotpink;
   font-size: 16px;
   margin-top: 10px;
   width: 160px;
@@ -53,6 +53,7 @@ button {
 .order {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 @media only screen and (min-width: 400px) {
