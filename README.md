@@ -6,7 +6,7 @@ Ik heb mijn eerste Nuxt-applicatie gebouwd met VUEX. Ik had nog geen ervaring me
 
 [Bekijk hier de live-versie](https://nuxt-product-page.netlify.app/)
 
-<img src="https://media.giphy.com/media/0ybDUTSpS6zVarEHiM/giphy.gif" width="100%" height="100%"/>
+<img src="./assets/screenshot.png" width="100%" height="100%"/>
 
 ## Inhoudsopgave
 
@@ -31,10 +31,10 @@ Maak met behulp van de api url een product overzicht met product kaartjes en fil
 
 ## 3. Gerealiseerde features
 
-- #1 Product page
-- #2 Shoppingcart
-- #3 Filters
-- #4 Detailpage, styling and animations
+- [#1 Product page](https://github.com/jodelajo/nuxt-product-page/pull/1)
+- [#2 Shoppingcart](https://github.com/jodelajo/nuxt-product-page/pull/2)
+- [#3 Filters](https://github.com/jodelajo/nuxt-product-page/pull/3)
+- [#4 Detailpage, styling and animations](https://github.com/jodelajo/nuxt-product-page/pull/4)
 
 ## 4. Nog te verbeteren
 
@@ -57,7 +57,7 @@ Nieuwe features:
 $ git clone https://github.com/jodelajo/nuxt-product-page.git
 ```
 
-## Build Setup
+#### Build Setup
 
 ```bash
 # install dependencies
