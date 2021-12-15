@@ -10,7 +10,7 @@
 
 ## Inleiding
 
-Dit is een project dat ik heb gemaakt als opdracht voor een sollicitatie bij snakeware. De opdracht was om een product pagina te bouwen die data fetched, producten weergeeft, een winkelwagen, product filters en een detail pagina. Bovendien moest de app worden gemaakt met Vue / Nuxt
+Dit is een project dat ik heb gemaakt als opdracht voor een sollicitatie bij Snakeware. De opdracht was om een product pagina te bouwen die data fetched, producten weergeeft, een winkelwagen, product filters en een detail pagina. Bovendien moest de app worden gemaakt met Vue / Nuxt
 
 Ik heb de requirements opgedeeld in kleinere stukken:
 
@@ -29,7 +29,7 @@ Wat ik heb geleerd tijdens deze opdracht:
 - Na een werkende versie even opschonen houdt de boel overzichtelijk.
 - Nuxt, Vue & VUEX natuurlijk
 
-Hieronder staat een lijst met Pull Request voor de verschillende versies. Die bevatten een samenvattinkje en screenshots / gifs zodat je het proces kan volgen.
+Hieronder staat een lijst met Pull Request voor de verschillende versies. Die bevatten een kleine samenvatting en screenshots / gifs zodat je het proces kan volgen.
 
 ## Inhoudsopgave
 
@@ -87,7 +87,7 @@ $ git clone https://github.com/jodelajo/nuxt-product-page.git
 npm install
 
 # serve with hot reload at localhost:3000
-$ npm run dev
+npm run dev
 
 # build for production and launch server
 npm run build
@@ -98,6 +98,7 @@ npm run generate
 ```
 
 Configureer de API Key
+</br>
 Kopieer het env.dist bestand
 
 ```

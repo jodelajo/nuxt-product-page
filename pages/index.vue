@@ -510,8 +510,12 @@ aside ul li {
   .sort-wrapper {
     display: flex;
     justify-content: flex-end;
-    padding-bottom: 60px;
-    width: 100%;
+    /* background-color: blueviolet; */
+    /* padding-bottom: 60px; */
+    width: 200px;
+    /* margin-right: 58px; */
+    margin-top: -10px;
+    z-index: 8;
   }
   .buttonSort {
     display: flex;
@@ -525,19 +529,14 @@ aside ul li {
   #sort,
   .sort {
     position: fixed;
-    /* padding-top: 10px; */
-    /* padding-bottom: 10px; */
     top: 60px;
-    /* height: 50px; */
     border-left: 1px solid lightgray;
-    /* border-bottom: 1px solid lightgray; */
     border-right: 1px solid lightgray;
     width: 200px;
   }
-  .sort {
-    margin-right: 20px;
+  #sort {
+    height: 48px;
   }
-
   .option {
     width: 100%;
   }
