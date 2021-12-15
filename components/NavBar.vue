@@ -118,5 +118,8 @@ export default {
     width: 1200px;
     padding: 0 50px;
   }
+  .homeIcon {
+    margin-left: -30px;
+  }
 }
 </style>
