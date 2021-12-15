@@ -1,5 +1,9 @@
 # Nuxtjs Shop met VUEX
 
+![NuxtJS](https://img.shields.io/badge/Nuxt-black?style=for-the-badge&logo=nuxt.js&logoColor=white)
+
+![Vue.js](https://img.shields.io/badge/vuejs-%2335495e.svg?style=for-the-badge&logo=vuedotjs&logoColor=%234FC08D)
+
 ## Inleiding
 
 Ik heb mijn eerste Nuxt-applicatie gebouwd met VUEX. Ik had nog geen ervaring met Vue, Nuxt en VUEX, maar ik vond het een hele leuke uitdaging om het te leren en deze app te bouwen.
@@ -35,7 +39,7 @@ Maak met behulp van de api url een product overzicht met product kaartjes en fil
 - [#2 Shoppingcart](https://github.com/jodelajo/nuxt-product-page/pull/2)
 - [#3 Filters](https://github.com/jodelajo/nuxt-product-page/pull/3)
 - [#4 Detailpage, styling and animations](https://github.com/jodelajo/nuxt-product-page/pull/4)
-- [#5 Private API_KEY]
+- [#5 Private API_KEY](https://github.com/jodelajo/nuxt-product-page/pull/10)
 
 ## 4. Nog te verbeteren
 
