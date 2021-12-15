@@ -99,7 +99,9 @@ export default {
 .counter {
   position: absolute;
   text-align: center;
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: white;
   bottom: 16px;
   left: 30px;
