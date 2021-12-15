@@ -35,6 +35,7 @@ Maak met behulp van de api url een product overzicht met product kaartjes en fil
 - [#2 Shoppingcart](https://github.com/jodelajo/nuxt-product-page/pull/2)
 - [#3 Filters](https://github.com/jodelajo/nuxt-product-page/pull/3)
 - [#4 Detailpage, styling and animations](https://github.com/jodelajo/nuxt-product-page/pull/4)
+- [#5 Private API_KEY]
 
 ## 4. Nog te verbeteren
 
@@ -44,7 +45,6 @@ Nieuwe features:
 
 - pagination
 - beter importeren van fonts
-- env-bestand voor API-key
 - testen
 - filters in de url, zoals:
   https://www.coolblue.nl/laptops/apple-macbook/apple-macbook-air/coolblues-keuze/aanbevolen-voor-gebruik-macbook:fotobewerking
