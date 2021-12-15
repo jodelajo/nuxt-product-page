@@ -4,9 +4,13 @@
 
 ![Vue.js](https://img.shields.io/badge/vuejs-%2335495e.svg?style=for-the-badge&logo=vuedotjs&logoColor=%234FC08D)
 
+[Bekijk hier de live-versie](https://nuxt-product-page.netlify.app/)
+
+<img src="./assets/screenshot.png" width="100%" height="100%"/>
+
 ## Inleiding
 
-Dit is een project wat ik heb gemaakt als opdracht voor een sollicitatie bij snakeware. De opdracht was om een product pagina te bouwen die data fetched, producten weergeeft, een winkelwagen, product filters en een detail pagina. Bovendien moest de app worden gemaakt met Vue / Nuxt
+Dit is een project dat ik heb gemaakt als opdracht voor een sollicitatie bij snakeware. De opdracht was om een product pagina te bouwen die data fetched, producten weergeeft, een winkelwagen, product filters en een detail pagina. Bovendien moest de app worden gemaakt met Vue / Nuxt
 
 Ik heb de requirements opgedeeld in kleinere stukken:
 
@@ -27,15 +31,11 @@ Wat ik heb geleerd tijdens deze opdracht:
 
 Hieronder staat een lijst met Pull Request voor de verschillende versies. Die bevatten een samenvattinkje en screenshots / gifs zodat je het proces kan volgen.
 
-[Bekijk hier de live-versie](https://nuxt-product-page.netlify.app/)
-
-<img src="./assets/screenshot.png" width="100%" height="100%"/>
-
 ## Inhoudsopgave
 
 1. Opdrachtbeschrijving
 2. Gebruikte technologieën
-3. Gerealiseerde features
+3. Gerealiseerde features met Pull Requests
 4. Nog te verbeteren
 5. Installatie instructies
 
@@ -52,7 +52,7 @@ Maak met behulp van de api url een product overzicht met product kaartjes en fil
 - VUEX
 - Javascript
 
-## 3. Gerealiseerde features
+## 3. Gerealiseerde features met Pull Requests
 
 - [#1 Product page](https://github.com/jodelajo/nuxt-product-page/pull/1)
 - [#2 Shoppingcart](https://github.com/jodelajo/nuxt-product-page/pull/2)
