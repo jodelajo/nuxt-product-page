@@ -7,9 +7,7 @@
             <div class="deselectTitle">
               <h3>Reset filters</h3>
             </div>
-            <div class="deselectButton">
-              <button v-on:click="deselect()">x</button>
-            </div>
+            <button class="deselectButton" v-on:click="deselect()">x</button>
           </div>
 
           <div class="soorten">
@@ -29,6 +27,7 @@
                 >
 
                 <button
+                  class="deselectButton"
                   v-if="group === displayGroup"
                   v-on:click="selectGroup('all')"
                 >
@@ -68,16 +67,18 @@
                 :key="brand"
                 v-bind:class="{ selected: brand === displayBrand }"
               >
-                <span>
-                  <span v-on:click="selectBrand(brand)"> {{ brand }}</span>
-                  <span class="subgroup"> ({{ brandGroup[brand] }})</span>
-                  <button
-                    v-if="brand === displayBrand"
-                    v-on:click="selectBrand('all')"
-                  >
-                    x
-                  </button>
-                </span>
+                <span v-on:click="selectBrand(brand)">
+                  {{ brand }}
+                  <span class="subgroup"> ({{ brandGroup[brand] }})</span></span
+                >
+
+                <button
+                  class="deselectButton"
+                  v-if="brand === displayBrand"
+                  v-on:click="selectBrand('all')"
+                >
+                  x
+                </button>
               </li>
             </ul>
             <ul>
@@ -98,6 +99,7 @@
       <main class="product-section">
         <div class="buttonSort">
           <button class="filter" v-on:click="showFilter = !showFilter">
+            <span class="filterIcon"><FilterIcon /></span>
             Filter producten
           </button>
           <div class="sort-wrapper">
@@ -336,8 +338,8 @@ export default {
   justify-content: center;
   height: 50px;
   width: 100%;
-  border-bottom: 1px solid hotpink;
-  border-left: 0.5px solid hotpink;
+  border-bottom: 1px solid lightgray;
+  border-left: 0.5px solid lightgray;
 }
 
 #sort {
@@ -363,15 +365,19 @@ export default {
 }
 
 .filter {
-  display: block;
+  display: flex;
   height: 50px;
   width: 50%;
-  padding-left: 20px;
-  text-align: start;
+  justify-content: flex-start;
+  align-items: center;
   background-color: white;
   border: none;
-  border-bottom: 1px solid hotpink;
-  border-right: 0.5px solid hotpink;
+  border-bottom: 1px solid lightgray;
+  border-right: 0.5px solid lightgray;
+}
+.filterIcon {
+  margin-top: 2px;
+  margin-right: 40px;
 }
 .selected {
   display: flex;
@@ -409,11 +415,12 @@ export default {
   left: 0;
 }
 .scroller {
-  height: 100%;
+  height: 74vh;
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  padding-top: 30px;
+  margin-top: 20px;
   overflow-x: hidden;
-  z-index: 1;
 }
 .offer-toggle {
   padding: 20px 0 20px 20px;
@@ -436,7 +443,6 @@ aside {
   font-size: 16px;
   row-gap: 30px;
   width: 100%;
-  margin-top: 40px;
   line-height: 1.5;
 }
 aside ul {
@@ -453,7 +459,15 @@ aside ul li {
 .deselectTitle {
   padding-right: 14px;
 }
+.deselectButton {
+  background-color: white;
+  border: 1px solid lightgray;
+  margin-right: 6px;
+}
 
+.deselectButton:hover {
+  transform: scale(1.1);
+}
 .option {
   height: 30px;
   width: 160px;
@@ -482,6 +496,7 @@ aside ul li {
 
   .main-container h1 {
     position: relative;
+    margin-top: -50px;
   }
   .main-wrapper {
     flex-direction: row;
@@ -504,7 +519,7 @@ aside ul li {
   #sort,
   .sort {
     position: fixed;
-    top: 70px;
+    top: 60px;
     height: 30px;
     border-left: 1px solid lightgray;
     border-bottom: 1px solid lightgray;
@@ -521,11 +536,15 @@ aside ul li {
   .filter {
     display: none;
   }
+  .mobileSidebar {
+    display: none;
+  }
   .sidebar {
     position: fixed;
     display: flex;
     width: 300px;
     height: 100vh;
+    margin-top: 114px;
     background-color: white;
     padding-left: 20px;
     padding-right: 20px;
@@ -559,12 +578,7 @@ aside ul li {
     gap: 20px;
     align-items: flex-start;
   }
-  .sidebar {
-    position: fixed;
-    left: auto;
-    top: 100px;
-    font-size: 1rem;
-  }
+
   .offer-toggle {
     padding: 20px 0 20px 20px;
     border-top: 1px solid rgb(73, 73, 73);
@@ -585,6 +599,9 @@ aside ul li {
 
   .aside ul li {
     list-style: none;
+  }
+  .sort {
+    margin-right: 40px;
   }
 }
 </style>
