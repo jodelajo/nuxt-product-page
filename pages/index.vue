@@ -125,6 +125,11 @@ import { mapState } from "vuex";
 import axios from "axios";
 
 export default {
+  mounted() {
+    // console.log(process.env.API_KEY);
+    // const API_KEY = process.env.API_KEY;
+    // console.log("api", API_KEY);
+  },
   data() {
     return {
       showFilter: false,
@@ -137,8 +142,9 @@ export default {
     };
   },
   async fetch({ store }) {
+    const API_KEY = process.env.NUXT_ENV_API_KEY;
     const res = await axios.get(
-      "https://a1-api.detailresult.nl/v1/assortmentcache/group/281/104?api_key=6d3a42a3-6d93-4f98-838d-bcc0ab2307fd"
+      `https://a1-api.detailresult.nl/v1/assortmentcache/group/281/104?api_key=${API_KEY}`
     );
     store.commit("init", res.data);
   },
