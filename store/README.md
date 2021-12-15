@@ -11,7 +11,7 @@ Ik heb mijn eerste Nuxt-applicatie gebouwd met VUEX. Ik had nog geen ervaring me
 ## Inhoudsopgave
 
 1. Opdrachtbeschrijving
-2. Gebruikte technologiën
+2. Gebruikte technologieën
 3. Gerealiseerde features
 4. Nog te verbeteren
 5. Installatie instructies
@@ -20,7 +20,7 @@ Ik heb mijn eerste Nuxt-applicatie gebouwd met VUEX. Ik had nog geen ervaring me
 
 Maak met behulp van de api url een product overzicht met product kaartjes en filters.
 
-## 2. Gebruikte technologiën
+## 2. Gebruikte technologieën
 
 - HTML
 - Css
