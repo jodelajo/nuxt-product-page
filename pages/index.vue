@@ -525,10 +525,12 @@ aside ul li {
   #sort,
   .sort {
     position: fixed;
+    /* padding-top: 10px; */
+    /* padding-bottom: 10px; */
     top: 60px;
-    height: 30px;
+    /* height: 50px; */
     border-left: 1px solid lightgray;
-    border-bottom: 1px solid lightgray;
+    /* border-bottom: 1px solid lightgray; */
     border-right: 1px solid lightgray;
     width: 200px;
   }
