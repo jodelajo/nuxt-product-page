@@ -551,7 +551,7 @@ aside ul li {
     display: flex;
     width: 300px;
     height: 100vh;
-    margin-top: 114px;
+    margin-top: 104px;
     background-color: white;
     padding-left: 20px;
     padding-right: 20px;
