@@ -10,7 +10,7 @@
 
 ## Inleiding
 
-Dit is een project dat ik heb gemaakt als opdracht voor een sollicitatie bij Snakeware. De opdracht was om een product pagina te bouwen die data fetched, producten weergeeft, een winkelwagen, product filters en een detail pagina. Bovendien moest de app worden gemaakt met Vue / Nuxt
+Dit is een project dat ik heb gemaakt als opdracht voor een sollicitatie. De opdracht was om een product pagina te bouwen die data fetched, producten weergeeft, een winkelwagen, product filters en een detail pagina. Bovendien moest de app worden gemaakt met Vue / Nuxt
 
 Ik heb de requirements opgedeeld in kleinere stukken:
 
